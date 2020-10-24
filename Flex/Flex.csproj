@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <LangVersion>preview</LangVersion>
+        <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="2020.2.0-eap" />
+    </ItemGroup>
+
+</Project>
