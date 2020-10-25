@@ -1,21 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using System.Text;
 using Flex.Buffers;
 using Flex.Buffers.Adaptors;
 
 namespace Flex
 {
-    public sealed class Other
-    {
-        public int IntOther { get; set; }
-    }
-
     public sealed class TypicalMessage
     {
-        public Other OtherProp { get; set; }
-        
+
         public string StringProp { get; set; } = "";
 
         public int IntProp { get; set; }
@@ -37,10 +30,6 @@ namespace Flex
                 GuidProp = Guid.NewGuid(),
                 IntProp = 123,
                 StringProp = "Hello",
-                OtherProp = new Other()
-                {
-                    IntOther = 123,
-                }
             };
 
             var session = serializer.CreateSession();
