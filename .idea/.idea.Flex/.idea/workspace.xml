@@ -7,7 +7,8 @@
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +19,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/195/UTF8Encoding.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/32/String.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/176/ASCIIUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/2F6/MemoryStream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/5B/BitConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/BF/Span.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/3B1/Unsafe.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/45/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/185/EncoderReplacementFallback.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../asynkron/FastExpressionCompiler/src/FastExpressionCompiler.LightExpression/Expression.cs" root0="SKIP_HIGHLIGHTING" />
@@ -29,16 +35,16 @@
       <option value="$PROJECT_DIR$/Flex/Generics/Stuff.cs" />
       <option value="$PROJECT_DIR$/Flex/Reflection/ReflectionEx.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ValueSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
       <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Program.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -134,7 +140,13 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1603630839249</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="FEC nuget">
+      <created>1603631267924</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1603631267924</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,17 +176,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Flex/Compilation/Compiler.cs</url>
-          <line>32</line>
-          <properties documentPath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" initialLine="27" containingFunctionPresentation="method 'CompileSerializer'">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/5B/BitConverter.cs</url>
+          <line>95</line>
+          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/5B/BitConverter.cs" initialLine="95" containingFunctionPresentation="method 'TryWriteBytes'">
             <startOffsets>
-              <option value="1101" />
+              <option value="3228" />
             </startOffsets>
             <endOffsets>
-              <option value="1158" />
+              <option value="3265" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/5B/BitConverter.cs</url>
+          <line>76</line>
+          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/5B/BitConverter.cs" initialLine="76" containingFunctionPresentation="method 'TryWriteBytes'">
+            <startOffsets>
+              <option value="2615" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2654" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

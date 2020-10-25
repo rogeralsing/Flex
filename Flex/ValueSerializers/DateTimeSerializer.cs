@@ -20,7 +20,7 @@ namespace Flex.ValueSerializers
         {
             writer.EnsureContiguous(Size);
             BitConverter.TryWriteBytes(writer.WritableSpan, value.Ticks);
-            BitConverter.TryWriteBytes(writer.WritableSpan[8..], (byte)value.Kind);
+            writer.WritableSpan[8] = (byte) value.Kind;
             writer.AdvanceSpan(Size);
         }
 
