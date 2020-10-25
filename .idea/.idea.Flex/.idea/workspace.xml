@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Flex/Flex.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Flex.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Serializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,10 +32,10 @@
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
-      <option value="$PROJECT_DIR$/Flex/Program.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
+      <option value="$PROJECT_DIR$/Flex/Program.cs" />
       <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
     </changedPaths>
   </component>
@@ -118,7 +120,13 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1603622681829</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="fast">
+      <created>1603622972345</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1603622972345</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

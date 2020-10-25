@@ -33,26 +33,26 @@ namespace Flex
             };
             
             var bytes = new byte[100];
-            s.Serialize(message,stream);
-            // var b2 = new SingleSegmentBuffer(bytes);
-            // var writer2 = new Writer<SingleSegmentBuffer>(b2,null);
-            // s.Serialize(message,ref writer2);
+            // s.Serialize(message,stream);
+            var b2 = new SingleSegmentBuffer(bytes);
+            var writer2 = new Writer<SingleSegmentBuffer>(b2,null);
+            s.Serialize(message,ref writer2);
 
             Benchmark(bytes, s, message);
         }
 
         private static void Benchmark(byte[] bytes, Serializer s, TypicalMessage message)
         {
-
-            var ms = new MemoryStream {Capacity = 100, Position = 0};
-            s.Serialize(message, ms);
+            //
+            // var ms = new MemoryStream {Capacity = 100, Position = 0};
+            // s.Serialize(message, ms);
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < 10_000_000; i++)
             {
-                ms.Position = 0;
-             //   var b = new SingleSegmentBuffer(bytes);
-             //   var writer = new Writer<SingleSegmentBuffer>(b, null);
-                s.Serialize(message, ms);
+                // ms.Position = 0;
+             var b = new SingleSegmentBuffer(bytes);
+             var writer = new Writer<SingleSegmentBuffer>(b, null);
+                s.Serialize(message,ref writer);
             }
 
             Console.WriteLine(sw.Elapsed.TotalMilliseconds);
