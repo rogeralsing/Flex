@@ -8,28 +8,30 @@ namespace Flex
 {
     public class Serializer
     {
-        private readonly bool _preserveReferences;
-
-        public Serializer(bool preserveReferences)
+        public Serializer(SerializerOptions options )
         {
-            _preserveReferences = preserveReferences;
+            Options = options;
         }
-        
+
+        public SerializerSession CreateSession() => new SerializerSession(this);
+
+        public SerializerOptions Options { get; }
+
         public void Serialize<T>(T value, MemoryStream stream)
         {
-            var writer = Writer.Create(stream, new SerializerSession());
-            Serialize(value, writer,_preserveReferences);
+            var writer = Writer.Create(stream, new SerializerSession(this));
+            Serialize(value, writer,Options.PreserveObjectReferences);
         }
         
         public void Serialize<T>(T value, Stream stream)
         {
-            var writer = Writer.Create(stream, new SerializerSession());
-            Serialize(value, writer,_preserveReferences);
+            var writer = Writer.Create(stream, new SerializerSession(this));
+            Serialize(value, writer,Options.PreserveObjectReferences);
         }
         
         public void Serialize<T,TBuffer>(T value, ref Writer<TBuffer> writer)where TBuffer:IBufferWriter<byte>
         {
-            Serialize(value, writer,_preserveReferences);
+            Serialize(value, writer,Options.PreserveObjectReferences);
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -44,10 +46,10 @@ namespace Flex
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void Serialize<TObj,TBuffer,TStyle>(TObj value, ref Writer<TBuffer> writer) where TBuffer:IBufferWriter<byte>
         {
-            var s = TypedSerializers<TBuffer, TStyle,TObj>.SerializerDelegate;
-           // s.WriteManifest(ref writer);
-            //s.Write(value, ref writer);
-            s(value, ref writer);
+            var s = TypedSerializers<TBuffer, TStyle,TObj>.Serializer;
+             s.WriteManifest(ref writer);
+            s.Write(value, ref writer);
+          //  s(value, ref writer);
             writer.Commit();
         }
     }

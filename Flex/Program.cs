@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Text;
 using Flex.Buffers;
 using Flex.Buffers.Adaptors;
@@ -24,10 +23,9 @@ namespace Flex
     {
         static void Main(string[] args)
         {
-            var s = new Serializer(true);
-            var stream = new MemoryStream();
+            var serializer = new Serializer(new SerializerOptions(false,new []{typeof(TypicalMessage)}));
 
-            var message = new TypicalMessage()
+            var message = new TypicalMessage
             {
                 DateProp = DateTime.Now,
                 GuidProp = Guid.NewGuid(),
@@ -35,24 +33,25 @@ namespace Flex
                 StringProp = "Hello"
             };
 
+            var session = serializer.CreateSession();
             var bytes = new byte[100];
             // s.Serialize(message,stream);
             var b2 = new SingleSegmentBuffer(bytes);
-            var writer2 = new Writer<SingleSegmentBuffer>(b2, null);
-            s.Serialize(message, ref writer2);
+            var writer2 = new Writer<SingleSegmentBuffer>(b2, session);
+            serializer.Serialize(message, ref writer2);
 
             BenchmarkBaseline(message);
-            Benchmark(bytes, s, message);
+            Benchmark(bytes, serializer,session, message);
         }
 
-        private static void Benchmark(byte[] bytes, Serializer s, TypicalMessage message)
+        private static void Benchmark(byte[] bytes, Serializer s, SerializerSession session, TypicalMessage message)
         {
             Console.WriteLine("Benchmarking Flex");
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < 10_000_000; i++)
             {
                 var b = new SingleSegmentBuffer(bytes);
-                var writer = new Writer<SingleSegmentBuffer>(b, null);
+                var writer = new Writer<SingleSegmentBuffer>(b, session);
                 s.Serialize(message, ref writer);
             }
 
@@ -64,6 +63,7 @@ namespace Flex
             var bytes = new byte[100];
             Console.WriteLine("Benchmarking baseline - faster than this is probably not possible");
             var sw = Stopwatch.StartNew();
+            
             for (int i = 0; i < 10_000_000; i++)
             {
                 //Note to reader:
