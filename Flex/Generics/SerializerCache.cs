@@ -23,10 +23,26 @@ namespace Flex.Generics
                 [typeof(DateTime)] = new DateTimeSerializer<TBuffer>()
             };
 
-        public static ValueSerializer<TBuffer> GetOrBuild(Type type) => 
-            Serializers.GetOrAdd(type, Compiler<TBuffer, TStyle>.CompileSerializer);
+        public static ValueSerializer<TBuffer> GetOrBuild(Type type)
+        {
+            if (Serializers.TryGetValue(type, out var s))
+            {
+                return s;
+            }
 
-        public static ValueSerializer<T,TBuffer> GetOrBuild<T>() => 
-            (ValueSerializer<T,TBuffer>) GetOrBuild(typeof(T));
+            var res = Compiler<TBuffer, TStyle>.CompileSerializer(type);
+            Serializers.TryAdd(type, res);
+            return res;
+        }
+
+        public static ValueSerializer<T,TBuffer> GetOrBuild<T>()
+        {
+            return Inner<T>.Serializer;
+        }
+
+        internal static class Inner<T>
+        {
+            internal static readonly ValueSerializer<T, TBuffer> Serializer = (ValueSerializer<T, TBuffer>)Compiler<TBuffer, TStyle>.CompileSerializer(typeof(T));
+        }
     }
 }

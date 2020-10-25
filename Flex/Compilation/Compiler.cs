@@ -1,5 +1,6 @@
 using System;
 using System.Buffers;
+using System.Collections.Generic;
 using System.Linq;
 using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
@@ -19,13 +20,12 @@ namespace Flex.Compilation
         public static ValueSerializer<TBuffer> CompileSerializer(Type type) =>
             GenericCaller.RunGeneric<ValueSerializer<TBuffer>>(type,() =>
             {
-                ValueSerializer<TBuffer> Create<TValue>() => CompileSerializer<TValue>();
+                ValueSerializer<TBuffer> Create<TValue>() => CompileSerializer<TValue>(type);
             });
 
-        private static ValueSerializer<TBuffer> CompileSerializer<TValue>()
+        private static ValueSerializer<TBuffer> CompileSerializer<TValue>(Type type)
         {
-            var type = typeof(TValue);
-            var writerType = typeof(Writer<TBuffer>).ReflectedType;
+            var writerType = typeof(Writer<TBuffer>).MakeByRefType();
             
             var fields = type.GetFieldsForType();
             var fieldSerializers =
@@ -35,24 +35,33 @@ namespace Flex.Compilation
 
             var typedTarget = Expression.Parameter(type, "target");
             var typedWriter =  Expression.Parameter(writerType, "writer");
-            var body = Expression.Block(Array.Empty<Expression>());
             
             
-            foreach (var field in fields)
+
+            var expressions = new List<Expression>();
+
+            for (var index = 0; index < fields.Length; index++)
             {
+                var field = fields[index];
+                var serializer = fieldSerializers[index];
+                
+                var memberAccess = Expression.MakeMemberAccess(typedTarget, field);
                 if (field.FieldType.IsSealed)
                 {
-                    
+                    var writeField = serializer.EmitExpression(memberAccess, typedWriter);
+                    expressions.Add(writeField);
                 }
                 else
                 {
-                    
                 }
             }
 
+            Expression body = expressions.Any() ? Expression.Block(expressions) : Expression.Empty();
             var lambda = Expression.Lambda<ObjectSerializerDelegate<TBuffer, TValue>>(body, typedTarget, typedWriter);
 
             var del =lambda.CompileFast();
+            var cs = lambda.ToCSharpString();
+            Console.WriteLine(cs);
 
             var objectSerializer = new ObjectSerializer<TValue, TBuffer>(del);
             return objectSerializer;

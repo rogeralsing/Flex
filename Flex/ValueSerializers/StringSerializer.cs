@@ -18,7 +18,7 @@ namespace Flex.ValueSerializers
         public static void WriteStatic(string value, ref Writer<TBuffer> writer)
         {
             var length = Encoding.UTF8.GetByteCount(value);
-            writer.Allocate(length+4);
+            writer.EnsureContiguous(length+4);
             BitConverter.TryWriteBytes(writer.WritableSpan, length);
             Encoding.UTF8.GetBytes(value, writer.WritableSpan[4..]);
             writer.AdvanceSpan(length+4);

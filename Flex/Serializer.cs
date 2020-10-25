@@ -14,9 +14,21 @@ namespace Flex
         {
             _preserveReferences = preserveReferences;
         }
+        
+        public void Serialize<T>(T value, MemoryStream stream)
+        {
+            var writer = Writer.Create(stream, new SerializerSession());
+            Serialize(value, writer);
+        }
+        
         public void Serialize<T>(T value, Stream stream)
         {
             var writer = Writer.Create(stream, new SerializerSession());
+            Serialize(value, writer);
+        }
+        
+        public void Serialize<T,TBuffer>(T value, ref Writer<TBuffer> writer)where TBuffer:IBufferWriter<byte>
+        {
             Serialize(value, writer);
         }
         

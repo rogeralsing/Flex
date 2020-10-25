@@ -18,7 +18,7 @@ namespace Flex.ValueSerializers
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteStatic(Guid value, ref Writer<TBuffer> writer)
         {
-            writer.Allocate(Size);
+            writer.EnsureContiguous(Size);
             value.TryWriteBytes(writer.WritableSpan);
             writer.AdvanceSpan(Size);
         }
