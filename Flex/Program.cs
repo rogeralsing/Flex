@@ -61,7 +61,7 @@ namespace Flex
         private static void BenchmarkBaseline(TypicalMessage message)
         {
             var bytes = new byte[100];
-            Console.WriteLine("Benchmarking baseline");
+            Console.WriteLine("Benchmarking baseline - faster than this is probably not possible");
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < 10_000_000; i++)
             {

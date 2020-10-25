@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +143,13 @@
       <option name="presentableId" value="LOCAL−00008" />
       <updated>1603631267924</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL−00009" summary="Baseline benchmark">
+      <created>1603634434760</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1603634434760</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +173,8 @@
     <MESSAGE value="works" />
     <MESSAGE value="fast" />
     <MESSAGE value="FEC nuget" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEC nuget" />
+    <MESSAGE value="Baseline benchmark" />
+    <option name="LAST_COMMIT_MESSAGE" value="Baseline benchmark" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
