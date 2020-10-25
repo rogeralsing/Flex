@@ -18,24 +18,24 @@ namespace Flex
         public void Serialize<T>(T value, MemoryStream stream)
         {
             var writer = Writer.Create(stream, new SerializerSession());
-            Serialize(value, writer);
+            Serialize(value, writer,_preserveReferences);
         }
         
         public void Serialize<T>(T value, Stream stream)
         {
             var writer = Writer.Create(stream, new SerializerSession());
-            Serialize(value, writer);
+            Serialize(value, writer,_preserveReferences);
         }
         
         public void Serialize<T,TBuffer>(T value, ref Writer<TBuffer> writer)where TBuffer:IBufferWriter<byte>
         {
-            Serialize(value, writer);
+            Serialize(value, writer,_preserveReferences);
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void Serialize<T,TBuffer>(T value, Writer<TBuffer> writer) where TBuffer:IBufferWriter<byte>
+        private static void Serialize<T,TBuffer>(T value, Writer<TBuffer> writer, bool preserveReferences) where TBuffer:IBufferWriter<byte>
         {
-            if (_preserveReferences)
+            if (preserveReferences)
                 Serialize<T, TBuffer, Graph>(value, ref writer);
             else
                 Serialize<T, TBuffer, Tree>(value, ref writer);
