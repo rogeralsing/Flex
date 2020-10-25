@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
-using Flex.Generics;
 using JetBrains.Annotations;
 
 #pragma warning disable 693
@@ -12,16 +11,16 @@ using JetBrains.Annotations;
 namespace Flex.ValueSerializers
 {
     [PublicAPI]
-    public class ObjectSerializer<TValue, TBuffer> : ValueSerializer<TValue, TBuffer>
+    public class ObjectSerializer<TValue, TStyle, TBuffer> : ValueSerializer<TValue, TBuffer>
         where TBuffer : IBufferWriter<byte>
     {
         public const byte ManifestFull = 255;
         public const byte ManifestIndex = 254;
-        private static readonly byte[] Manifest = GetManifest();
-        private static readonly Type Type = typeof(TValue);
-        private readonly ObjectSerializerDelegate<TBuffer, TValue> _serializer;
+        private readonly byte[] Manifest = GetManifest();
+        private readonly Type Type = typeof(TValue);
+        private readonly ObjectSerializerDelegate<TBuffer, TStyle, TValue> _serializer;
 
-        public ObjectSerializer(ObjectSerializerDelegate<TBuffer, TValue> serializer)
+        public ObjectSerializer(ObjectSerializerDelegate<TBuffer, TStyle, TValue> serializer)
         {
             _serializer = serializer;
         }

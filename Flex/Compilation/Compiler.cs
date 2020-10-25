@@ -25,13 +25,13 @@ namespace Flex.Compilation
                 ValueSerializer<TBuffer> Create<TValue>()
                 {
                     var del = CompileSerializer<TValue>(type);
-                    var objectSerializer = new ObjectSerializer<TValue, TBuffer>(del);
+                    var objectSerializer = new ObjectSerializer<TValue, TStyle, TBuffer>(del);
                     return objectSerializer;
                 }
             });
         }
 
-        public static ObjectSerializerDelegate<TBuffer, TValue> CompileSerializer<TValue>(Type type)
+        public static ObjectSerializerDelegate<TBuffer, TStyle, TValue> CompileSerializer<TValue>(Type type)
         {
             var writerType = typeof(Writer<TBuffer>).MakeByRefType();
 
@@ -61,7 +61,7 @@ namespace Flex.Compilation
             }
 
             Expression body = expressions.Any() ? Expression.Block(expressions) : Expression.Empty();
-            var lambda = Expression.Lambda<ObjectSerializerDelegate<TBuffer, TValue>>(body, typedTarget, typedWriter);
+            var lambda = Expression.Lambda<ObjectSerializerDelegate<TBuffer, TStyle, TValue>>(body, typedTarget, typedWriter);
 
             var del = lambda.CompileFast();
             var cs = lambda.ToCSharpString();
