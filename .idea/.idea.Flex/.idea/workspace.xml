@@ -8,15 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Serializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ValueSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ValueSerializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +36,9 @@
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
       <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
+      <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
       <option value="$PROJECT_DIR$/Flex/Program.cs" />
     </changedPaths>
   </component>

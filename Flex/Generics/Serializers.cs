@@ -8,9 +8,9 @@ using JetBrains.Annotations;
 namespace Flex.Generics
 {
     [PublicAPI]
-    public static class SerializerCache<TBuffer, TStyle> where TBuffer:IBufferWriter<byte>
+    public static class Serializers<TBuffer, TStyle> where TBuffer:IBufferWriter<byte>
     {
-        private static readonly ConcurrentDictionary<Type, ValueSerializer<TBuffer>> Serializers =
+        private static readonly ConcurrentDictionary<Type, ValueSerializer<TBuffer>> Cache =
             GetDefaultSerializers();
 
         private static ConcurrentDictionary<Type, ValueSerializer<TBuffer>> GetDefaultSerializers() =>
@@ -25,24 +25,16 @@ namespace Flex.Generics
 
         public static ValueSerializer<TBuffer> GetOrBuild(Type type)
         {
-            if (Serializers.TryGetValue(type, out var s))
-            {
-                return s;
-            }
+            if (Cache.TryGetValue(type, out var s)) return s;
 
             var res = Compiler<TBuffer, TStyle>.CompileSerializer(type);
-            Serializers.TryAdd(type, res);
+            Cache.TryAdd(type, res);
             return res;
         }
-
-        public static ValueSerializer<T,TBuffer> GetOrBuild<T>()
-        {
-            return Inner<T>.Serializer;
-        }
-
-        internal static class Inner<T>
-        {
-            internal static readonly ValueSerializer<T, TBuffer> Serializer = (ValueSerializer<T, TBuffer>)Compiler<TBuffer, TStyle>.CompileSerializer(typeof(T));
-        }
+    }
+    
+    internal static class TypedSerializers<TBuffer, TStyle,TObj> where TBuffer:IBufferWriter<byte>
+    {
+        internal static readonly ValueSerializer<TObj, TBuffer> Serializer = (ValueSerializer<TObj, TBuffer>)Compiler<TBuffer, TStyle>.CompileSerializer(typeof(TObj));
     }
 }

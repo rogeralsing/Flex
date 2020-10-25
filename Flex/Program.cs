@@ -33,6 +33,7 @@ namespace Flex
             };
             
             var bytes = new byte[100];
+            s.Serialize(message,stream);
             // var b2 = new SingleSegmentBuffer(bytes);
             // var writer2 = new Writer<SingleSegmentBuffer>(b2,null);
             // s.Serialize(message,ref writer2);

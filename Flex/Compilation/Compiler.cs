@@ -30,7 +30,7 @@ namespace Flex.Compilation
             var fields = type.GetFieldsForType();
             var fieldSerializers =
                 fields
-                    .Select(field => SerializerCache<TBuffer, TStyle>.GetOrBuild(field.FieldType))
+                    .Select(field => Serializers<TBuffer, TStyle>.GetOrBuild(field.FieldType))
                     .ToArray();
 
             var typedTarget = Expression.Parameter(type, "target");

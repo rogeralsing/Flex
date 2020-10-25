@@ -25,7 +25,7 @@
         </e>
         <e p="Flex.csproj" t="IncludeRecursive" />
         <e p="Generics" t="Include">
-          <e p="SerializerCache.cs" t="Include" />
+          <e p="Serializers.cs" t="Include" />
           <e p="Stuff.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
