@@ -34,8 +34,8 @@ namespace Flex.Reflection
             return fields;
         }
     }
-    
-    public static class GenericCaller 
+
+    public static class GenericCaller
     {
         public static TResult RunGeneric<TResult>(Type genericType, Action body)
         {

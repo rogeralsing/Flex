@@ -8,30 +8,33 @@ using Flex.Generics;
 using Flex.Reflection;
 using Flex.ValueSerializers;
 using JetBrains.Annotations;
+
 #pragma warning disable 8321
 
 namespace Flex.Compilation
 {
     [PublicAPI]
-    public static class Compiler<TBuffer, TStyle> where TBuffer:IBufferWriter<byte>
+    public static class Compiler<TBuffer, TStyle> where TBuffer : IBufferWriter<byte>
     {
         private static bool PreserveReferences => typeof(TStyle) == typeof(Graph);
 
-        public static ValueSerializer<TBuffer> CompileSerializer(Type type) =>
-            GenericCaller.RunGeneric<ValueSerializer<TBuffer>>(type,() =>
+        public static ValueSerializer<TBuffer> CompileSerializer(Type type)
+        {
+            return GenericCaller.RunGeneric<ValueSerializer<TBuffer>>(type, () =>
             {
                 ValueSerializer<TBuffer> Create<TValue>()
                 {
-                    var del= CompileSerializer<TValue>(type);
+                    var del = CompileSerializer<TValue>(type);
                     var objectSerializer = new ObjectSerializer<TValue, TBuffer>(del);
                     return objectSerializer;
                 }
             });
+        }
 
         public static ObjectSerializerDelegate<TBuffer, TValue> CompileSerializer<TValue>(Type type)
         {
             var writerType = typeof(Writer<TBuffer>).MakeByRefType();
-            
+
             var fields = type.GetFieldsForType();
             var fieldSerializers =
                 fields
@@ -39,9 +42,8 @@ namespace Flex.Compilation
                     .ToArray();
 
             var typedTarget = Expression.Parameter(type, "target");
-            var typedWriter =  Expression.Parameter(writerType, "writer");
-            
-            
+            var typedWriter = Expression.Parameter(writerType, "writer");
+
 
             var expressions = new List<Expression>();
 
@@ -49,22 +51,19 @@ namespace Flex.Compilation
             {
                 var field = fields[index];
                 var serializer = fieldSerializers[index];
-                
+
                 var memberAccess = Expression.MakeMemberAccess(typedTarget, field);
                 if (field.FieldType.IsSealed)
                 {
                     var writeField = serializer.EmitExpression(memberAccess, typedWriter);
                     expressions.Add(writeField);
                 }
-                else
-                {
-                }
             }
 
             Expression body = expressions.Any() ? Expression.Block(expressions) : Expression.Empty();
             var lambda = Expression.Lambda<ObjectSerializerDelegate<TBuffer, TValue>>(body, typedTarget, typedWriter);
 
-            var del =lambda.CompileFast();
+            var del = lambda.CompileFast();
             var cs = lambda.ToCSharpString();
             Console.WriteLine(cs);
 

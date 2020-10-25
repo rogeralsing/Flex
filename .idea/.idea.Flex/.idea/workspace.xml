@@ -7,7 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="" />
+    <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Generics/Stuff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Generics/Stuff.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +176,13 @@
       <option name="presentableId" value="LOCAL−00012" />
       <updated>1603647167637</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL−00013" summary="known types">
+      <created>1603647371322</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1603647371322</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
