@@ -40,7 +40,7 @@ namespace Flex
             var writer2 = new Writer<SingleSegmentBuffer>(b2, session);
             serializer.Serialize(message, ref writer2);
 
-            BenchmarkBaseline(message);
+      //      BenchmarkBaseline(message);
             Benchmark(bytes, serializer,session, message);
         }
 

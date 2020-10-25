@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using Flex.Buffers.Adaptors;
+using JetBrains.Annotations;
 
 #if NETCOREAPP
 #endif
@@ -46,6 +47,7 @@ namespace Flex.Buffers
             new Writer<SpanBufferWriter>(new SpanBufferWriter(output), output, session);
     }
 
+    [PublicAPI]
     public ref struct Writer<TBufferWriter> where TBufferWriter : IBufferWriter<byte>
     {
 #pragma warning disable IDE0044 // Add readonly modifier
@@ -300,11 +302,11 @@ namespace Flex.Buffers
         {
             var maxPotentialLength = value.Length * 2; //max two bytes per char
             EnsureContiguous(maxPotentialLength + 4);
-
+            var span = WritableSpan;
             //first write string bytes, 4 bytes into the span
-            var actualLength = Encoding.UTF8.GetBytes(value, WritableSpan[4..]);
+            var actualLength = Encoding.UTF8.GetBytes(value, span[4..]);
             //then write the actual length at 0 bytes into the span
-            BitConverter.TryWriteBytes(WritableSpan, actualLength);
+            BitConverter.TryWriteBytes(span, actualLength);
             AdvanceSpan(actualLength + 4);
         }
 

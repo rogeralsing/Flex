@@ -9,10 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,17 +39,17 @@
       <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/SerializerOptions.cs" />
       <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" />
-      <option value="$PROJECT_DIR$/Flex/Program.cs" />
       <option value="$PROJECT_DIR$/Flex/Reflection/ReflectionEx.cs" />
-      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -197,7 +194,13 @@
       <option name="presentableId" value="LOCAL−00015" />
       <updated>1603648188417</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL−00016" summary="Inline expressions">
+      <created>1603649218996</created>
+      <option name="number" value="LOCAL−00016" />
+      <option name="presentableId" value="LOCAL−00016" />
+      <updated>1603649218996</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +226,8 @@
     <MESSAGE value="FEC nuget" />
     <MESSAGE value="Baseline benchmark" />
     <MESSAGE value="known types" />
-    <option name="LAST_COMMIT_MESSAGE" value="known types" />
+    <MESSAGE value="Inline expressions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inline expressions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
