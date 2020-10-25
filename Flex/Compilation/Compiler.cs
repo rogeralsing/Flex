@@ -20,10 +20,15 @@ namespace Flex.Compilation
         public static ValueSerializer<TBuffer> CompileSerializer(Type type) =>
             GenericCaller.RunGeneric<ValueSerializer<TBuffer>>(type,() =>
             {
-                ValueSerializer<TBuffer> Create<TValue>() => CompileSerializer<TValue>(type);
+                ValueSerializer<TBuffer> Create<TValue>()
+                {
+                    var del= CompileSerializer<TValue>(type);
+                    var objectSerializer = new ObjectSerializer<TValue, TBuffer>(del);
+                    return objectSerializer;
+                }
             });
 
-        private static ValueSerializer<TBuffer> CompileSerializer<TValue>(Type type)
+        public static ObjectSerializerDelegate<TBuffer, TValue> CompileSerializer<TValue>(Type type)
         {
             var writerType = typeof(Writer<TBuffer>).MakeByRefType();
             
@@ -63,8 +68,8 @@ namespace Flex.Compilation
             var cs = lambda.ToCSharpString();
             Console.WriteLine(cs);
 
-            var objectSerializer = new ObjectSerializer<TValue, TBuffer>(del);
-            return objectSerializer;
+
+            return del;
         }
     }
 }

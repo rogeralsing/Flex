@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Serializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,16 +28,16 @@
       <option value="$PROJECT_DIR$/Flex/Generics/Stuff.cs" />
       <option value="$PROJECT_DIR$/Flex/Reflection/ReflectionEx.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ValueSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
-      <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
       <option value="$PROJECT_DIR$/Flex/Program.cs" />
+      <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
+      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -105,7 +103,19 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1603613193279</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="works">
+      <created>1603621170715</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1603621170715</updated>
+    </task>
+    <task id="LOCAL−00004" summary="works">
+      <created>1603621437847</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1603621437847</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,20 +136,21 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="First" />
     <MESSAGE value="Second" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second" />
+    <MESSAGE value="works" />
+    <option name="LAST_COMMIT_MESSAGE" value="works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Flex/Compilation/Compiler.cs</url>
-          <line>27</line>
+          <line>32</line>
           <properties documentPath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" initialLine="27" containingFunctionPresentation="method 'CompileSerializer'">
             <startOffsets>
-              <option value="891" />
+              <option value="1101" />
             </startOffsets>
             <endOffsets>
-              <option value="948" />
+              <option value="1158" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />

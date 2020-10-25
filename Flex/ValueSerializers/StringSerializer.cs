@@ -17,11 +17,14 @@ namespace Flex.ValueSerializers
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteStatic(string value, ref Writer<TBuffer> writer)
         {
-            var length = Encoding.UTF8.GetByteCount(value);
-            writer.EnsureContiguous(length+4);
-            BitConverter.TryWriteBytes(writer.WritableSpan, length);
-            Encoding.UTF8.GetBytes(value, writer.WritableSpan[4..]);
-            writer.AdvanceSpan(length+4);
+            var maxPotentialLength = Encoding.UTF8.GetMaxByteCount(value.Length);
+            writer.EnsureContiguous(maxPotentialLength+4);
+
+            //first write string bytes, 4 bytes into the span
+            var actualLength =Encoding.UTF8.GetBytes(value, writer.WritableSpan[4..]);
+            //then write the actual length at 0 bytes into the span
+            BitConverter.TryWriteBytes(writer.WritableSpan, actualLength);
+            writer.AdvanceSpan(actualLength+4);
         }
 
         public override void WriteManifest(ref Writer<TBuffer> writer) => WriteManifestStatic(ref writer);

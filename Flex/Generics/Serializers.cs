@@ -35,6 +35,9 @@ namespace Flex.Generics
     
     public static class TypedSerializers<TBuffer, TStyle,TObj> where TBuffer:IBufferWriter<byte>
     {
-        public static readonly ValueSerializer<TObj, TBuffer> Serializer = (ValueSerializer<TObj, TBuffer>)Compiler<TBuffer, TStyle>.CompileSerializer(typeof(TObj));
+        public static readonly ObjectSerializerDelegate< TBuffer,TObj> SerializerDelegate = Compiler<TBuffer, TStyle>.CompileSerializer<TObj>(typeof(TObj));
+
+        public static readonly ObjectSerializer<TObj, TBuffer> Serializer =
+            new ObjectSerializer<TObj, TBuffer>(SerializerDelegate);
     }
 }
