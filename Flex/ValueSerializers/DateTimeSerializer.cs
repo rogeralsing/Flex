@@ -1,6 +1,7 @@
 using System;
 using System.Buffers;
 using System.Runtime.CompilerServices;
+using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
 using JetBrains.Annotations;
 
@@ -20,8 +21,7 @@ namespace Flex.ValueSerializers
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteStatic(DateTime value, ref Writer<TBuffer> writer)
         {
-            writer.Write(value.Ticks);
-            writer.Write((byte) value.Kind);
+            writer.Write(value);
         }
 
         public override void WriteManifest(ref Writer<TBuffer> writer)
@@ -32,6 +32,13 @@ namespace Flex.ValueSerializers
         public override void Write(DateTime value, ref Writer<TBuffer> writer)
         {
             WriteStatic(value, ref writer);
+        }
+        
+        public override Expression EmitExpression(Expression value, Expression typedWriter)
+        {
+            var method = typeof(Writer<TBuffer>).GetMethod("Write", new[] {typeof(DateTime)});
+            var call = Expression.Call(typedWriter,method, value);
+            return call;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.IO;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Text;
 using Flex.Buffers.Adaptors;
 
 #if NETCOREAPP
@@ -15,25 +16,34 @@ namespace Flex.Buffers
     public static class Writer
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<TBufferWriter> Create<TBufferWriter>(TBufferWriter destination, SerializerSession session) where TBufferWriter : IBufferWriter<byte> => new Writer<TBufferWriter>(destination, session);
+        public static Writer<TBufferWriter> Create<TBufferWriter>(TBufferWriter destination, SerializerSession session)
+            where TBufferWriter : IBufferWriter<byte> => new Writer<TBufferWriter>(destination, session);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<MemoryStreamBufferWriter> Create(MemoryStream destination, SerializerSession session) => new Writer<MemoryStreamBufferWriter>(new MemoryStreamBufferWriter(destination), session);
+        public static Writer<MemoryStreamBufferWriter> Create(MemoryStream destination, SerializerSession session) =>
+            new Writer<MemoryStreamBufferWriter>(new MemoryStreamBufferWriter(destination), session);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<PoolingStreamBufferWriter> CreatePooled(Stream destination, SerializerSession session, int sizeHint = 0) => new Writer<PoolingStreamBufferWriter>(new PoolingStreamBufferWriter(destination, sizeHint), session);
+        public static Writer<PoolingStreamBufferWriter> CreatePooled(Stream destination, SerializerSession session,
+            int sizeHint = 0) =>
+            new Writer<PoolingStreamBufferWriter>(new PoolingStreamBufferWriter(destination, sizeHint), session);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<ArrayStreamBufferWriter> Create(Stream destination, SerializerSession session, int sizeHint = 0) => new Writer<ArrayStreamBufferWriter>(new ArrayStreamBufferWriter(destination, sizeHint), session);
+        public static Writer<ArrayStreamBufferWriter> Create(Stream destination, SerializerSession session,
+            int sizeHint = 0) =>
+            new Writer<ArrayStreamBufferWriter>(new ArrayStreamBufferWriter(destination, sizeHint), session);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<SpanBufferWriter> Create(byte[] output, SerializerSession session) => Create(output.AsSpan(), session);
+        public static Writer<SpanBufferWriter> Create(byte[] output, SerializerSession session) =>
+            Create(output.AsSpan(), session);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<MemoryBufferWriter> Create(Memory<byte> output, SerializerSession session) => new Writer<MemoryBufferWriter>(new MemoryBufferWriter(output), session);
+        public static Writer<MemoryBufferWriter> Create(Memory<byte> output, SerializerSession session) =>
+            new Writer<MemoryBufferWriter>(new MemoryBufferWriter(output), session);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<SpanBufferWriter> Create(Span<byte> output, SerializerSession session) => new Writer<SpanBufferWriter>(new SpanBufferWriter(output), output, session);
+        public static Writer<SpanBufferWriter> Create(Span<byte> output, SerializerSession session) =>
+            new Writer<SpanBufferWriter>(new SpanBufferWriter(output), output, session);
     }
 
     public ref struct Writer<TBufferWriter> where TBufferWriter : IBufferWriter<byte>
@@ -127,7 +137,8 @@ namespace Flex.Buffers
                 ThrowTooLarge(length);
             }
 
-            static void ThrowTooLarge(int l) => throw new InvalidOperationException($"Requested buffer length {l} cannot be satisfied by the writer.");
+            static void ThrowTooLarge(int l) =>
+                throw new InvalidOperationException($"Requested buffer length {l} cannot be satisfied by the writer.");
 #endif
         }
 
@@ -194,7 +205,7 @@ namespace Flex.Buffers
         public void Write(sbyte value)
         {
             EnsureContiguous(1);
-            _currentSpan[_bufferPos++] = (byte)value;
+            _currentSpan[_bufferPos++] = (byte) value;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -268,6 +279,34 @@ namespace Flex.Buffers
 
             Unsafe.WriteUnaligned(ref Unsafe.Add(ref MemoryMarshal.GetReference(_currentSpan), pos), lower);
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Write(Guid value)
+        {
+            EnsureContiguous(16);
+            value.TryWriteBytes(WritableSpan);
+            AdvanceSpan(16);
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Write(DateTime value)
+        {
+            Write(value.Ticks);
+            Write((byte) value.Kind);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Write(string value)
+        {
+            var maxPotentialLength = value.Length * 2; //max two bytes per char
+            EnsureContiguous(maxPotentialLength + 4);
+
+            //first write string bytes, 4 bytes into the span
+            var actualLength = Encoding.UTF8.GetBytes(value, WritableSpan[4..]);
+            //then write the actual length at 0 bytes into the span
+            BitConverter.TryWriteBytes(WritableSpan, actualLength);
+            AdvanceSpan(actualLength + 4);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void WriteVarInt(ulong value)
@@ -288,7 +327,7 @@ namespace Flex.Buffers
             Unsafe.WriteUnaligned(ref writeHead, lower);
 
             // Write the 2 byte overflow unconditionally
-            ushort upper = (ushort)(value >> (63 - neededBytes));
+            ushort upper = (ushort) (value >> (63 - neededBytes));
             writeHead = ref Unsafe.Add(ref writeHead, sizeof(ulong));
             Unsafe.WriteUnaligned(ref writeHead, upper);
         }
