@@ -7,9 +7,15 @@ using Flex.Buffers.Adaptors;
 
 namespace Flex
 {
-
-    public class TypicalMessage
+    public sealed class Other
     {
+        public int IntOther { get; set; }
+    }
+
+    public sealed class TypicalMessage
+    {
+        public Other OtherProp { get; set; }
+        
         public string StringProp { get; set; } = "";
 
         public int IntProp { get; set; }
@@ -30,7 +36,11 @@ namespace Flex
                 DateProp = DateTime.Now,
                 GuidProp = Guid.NewGuid(),
                 IntProp = 123,
-                StringProp = "Hello"
+                StringProp = "Hello",
+                OtherProp = new Other()
+                {
+                    IntOther = 123,
+                }
             };
 
             var session = serializer.CreateSession();

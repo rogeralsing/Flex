@@ -2,7 +2,9 @@ using System;
 using System.Buffers;
 using System.Linq;
 using System.Text;
+using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
+using Flex.Generics;
 using JetBrains.Annotations;
 
 #pragma warning disable 693
@@ -45,10 +47,24 @@ namespace Flex.ValueSerializers
                 writer.Write(knownTypeIndex);
             }
         }
+        
+        //not sure why this is slower, because _serializer was not static readonly?
+        // public static void WriteStatic(TValue value, ref Writer<TBuffer> writer)
+        // {
+        //     _serializer(value, ref writer);
+        // }
 
         public override void Write(TValue value, ref Writer<TBuffer> writer)
         {
             _serializer(value, ref writer);
+        }
+
+        public override Expression EmitExpression(Expression value, Expression typedWriter)
+        {
+            var target = Expression.Constant(this);
+            var method = GetType().GetMethod("Write");
+            var call = Expression.Call(target,method, value,typedWriter);
+            return call;
         }
     }
 }

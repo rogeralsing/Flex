@@ -25,7 +25,7 @@ namespace Flex.Generics
             };
         }
 
-        public static ValueSerializer<TBuffer> GetOrBuild(Type type)
+        public static ValueSerializer<TBuffer> ForType(Type type)
         {
             if (Cache.TryGetValue(type, out var s)) return s;
 
