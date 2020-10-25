@@ -7,15 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Flex/SerializerOptions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Serializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" afterDir="false" />
-    </list>
+    <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,10 +42,10 @@
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/SerializerOptions.cs" />
       <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Program.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -174,7 +166,13 @@
       <option name="presentableId" value="LOCAL−00011" />
       <updated>1603638820993</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL−00012" summary="known types">
+      <created>1603647167637</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1603647167637</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +197,8 @@
     <MESSAGE value="fast" />
     <MESSAGE value="FEC nuget" />
     <MESSAGE value="Baseline benchmark" />
-    <option name="LAST_COMMIT_MESSAGE" value="Baseline benchmark" />
+    <MESSAGE value="known types" />
+    <option name="LAST_COMMIT_MESSAGE" value="known types" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

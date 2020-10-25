@@ -30,14 +30,14 @@ namespace Flex.ValueSerializers
         
         public override void WriteManifest(ref Writer<TBuffer> writer)
         {
-            if (writer.Session.ShouldWriteTypeManifest(Type, out var typeIndex))
+            if (writer.Session.ShouldWriteTypeManifest(Type, out var knownTypeIndex))
             {
                 writer.Write(ManifestFull);
             }
             else
             {
                 writer.Write(ManifestIndex);
-                writer.Write(typeIndex);
+                writer.Write(knownTypeIndex);
             }
         }
 
