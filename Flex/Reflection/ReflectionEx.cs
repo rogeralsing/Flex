@@ -34,4 +34,29 @@ namespace Flex.Reflection
             return fields;
         }
     }
+    
+    public static class GenericCaller 
+    {
+        public static TResult RunGeneric<TResult>(Type genericType, Action body)
+        {
+            var (method, target) = Capture(body);
+            var genericMethod = method.MakeGenericMethod(genericType);
+            var res = genericMethod.Invoke(target, Array.Empty<object>());
+
+            return (TResult) res!;
+        }
+
+        private static (MethodInfo methodInfo, object target) Capture(Action body)
+        {
+            var target = body.Target;
+            var methods = target.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
+            var method = methods
+                .First(m =>
+                    m.Name != "MemberwiseClone" &&
+                    m.Name != "Finalize" &&
+                    m != body.Method);
+
+            return (method, target);
+        }
+    }
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Flex" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Buffers" t="Include">
+          <e p="Adaptors" t="Include">
+            <e p="ArrayBufferWriter.cs" t="Include" />
+            <e p="ArrayStreamBufferWriter.cs" t="Include" />
+            <e p="MemoryBufferWriter.cs" t="Include" />
+            <e p="MemoryStreamBufferWriter.cs" t="Include" />
+            <e p="PooledArrayBufferWriter.cs" t="Include" />
+            <e p="PoolingStreamBufferWriter.cs" t="Include" />
+            <e p="SingleSegmentBufferWriter.cs" t="Include" />
+            <e p="SpanBufferWriter.cs" t="Include" />
+          </e>
+          <e p="LICENSE" t="Include" />
+          <e p="README.md" t="Include" />
+          <e p="SerializerSession.cs" t="Include" />
+          <e p="Writer.cs" t="Include" />
+        </e>
+        <e p="Compilation" t="Include">
+          <e p="Compiler.cs" t="Include" />
+        </e>
+        <e p="Flex.csproj" t="IncludeRecursive" />
+        <e p="Generics" t="Include">
+          <e p="SerializerCache.cs" t="Include" />
+          <e p="Stuff.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="Flex.AssemblyInfo.cs" t="Include" />
+            </e>
+            <e p="netcoreapp3.1" t="Include">
+              <e p="Flex.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Reflection" t="Include">
+          <e p="ReflectionEx.cs" t="Include" />
+        </e>
+        <e p="Serializer.cs" t="Include" />
+        <e p="ValueSerializers" t="Include">
+          <e p="ByteSerializer.cs" t="Include" />
+          <e p="DateTimeSerializer.cs" t="Include" />
+          <e p="GuidSerializer.cs" t="Include" />
+          <e p="Int32Serializer.cs" t="Include" />
+          <e p="ObjectSerializer.cs" t="Include" />
+          <e p="ObjectSerializerDelegate.cs" t="Include" />
+          <e p="StringSerializer.cs" t="Include" />
+          <e p="ValueDeserializer.cs" t="Include" />
+          <e p="ValueSerializer.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Flex.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_Flex.1396341573.00" t="ExcludeRecursive" />
+  </component>
+</project>
