@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Flex.Buffers;
 using Flex.Buffers.Adaptors;
@@ -65,6 +66,8 @@ namespace Flex
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < 10_000_000; i++)
             {
+                //Note to reader:
+                // moving each row to static methods with aggressive inlining makes it identical to this
                 Encoding.UTF8.GetBytes(message.StringProp, bytes);
                 BitConverter.TryWriteBytes(bytes, message.IntProp);
                 message.GuidProp.TryWriteBytes(bytes);
