@@ -20,10 +20,8 @@ namespace Flex.ValueSerializers
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteStatic(DateTime value, ref Writer<TBuffer> writer)
         {
-            writer.EnsureContiguous(Size);
-            BitConverter.TryWriteBytes(writer.WritableSpan, value.Ticks);
-            writer.WritableSpan[8] = (byte) value.Kind;
-            writer.AdvanceSpan(Size);
+            writer.Write(value.Ticks);
+            writer.Write((byte) value.Kind);
         }
 
         public override void WriteManifest(ref Writer<TBuffer> writer)

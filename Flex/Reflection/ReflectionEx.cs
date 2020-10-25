@@ -49,7 +49,7 @@ namespace Flex.Reflection
         private static (MethodInfo methodInfo, object target) Capture(Action body)
         {
             var target = body.Target;
-            var methods = target.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
+            var methods = target!.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
             var method = methods
                 .First(m =>
                     m.Name != "MemberwiseClone" &&

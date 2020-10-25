@@ -7,7 +7,7 @@ namespace Flex.Buffers
     {
         private readonly ushort _nextTypeId;
         private readonly Dictionary<object, int> _objects = null!;
-        public readonly Serializer Serializer;
+        private readonly Serializer Serializer;
 
         private int _nextObjectId;
         private LinkedList<Type>? _trackedTypes;
@@ -15,8 +15,12 @@ namespace Flex.Buffers
         public SerializerSession(Serializer serializer)
         {
             Serializer = serializer;
-        //    if (serializer.Options.PreserveObjectReferences) _objects = new Dictionary<object, int>();
-        //    _nextTypeId = (ushort) serializer.Options.KnownTypes.Length;
+            if (serializer.Options.PreserveObjectReferences)
+            {
+                _objects = new Dictionary<object, int>();
+            }
+
+            _nextTypeId = (ushort) serializer.Options.KnownTypes.Length;
         }
 
         public void TrackSerializedObject(object obj)

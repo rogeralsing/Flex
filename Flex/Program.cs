@@ -10,7 +10,7 @@ namespace Flex
 
     public class TypicalMessage
     {
-        public string StringProp { get; set; }
+        public string StringProp { get; set; } = "";
 
         public int IntProp { get; set; }
 
