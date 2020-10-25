@@ -6,7 +6,8 @@ using Flex.Buffers.Adaptors;
 
 namespace Flex
 {
-    public class TypicalMessage
+
+    public class TypicalMessage 
     {
         public  string StringProp { get; set; }
 

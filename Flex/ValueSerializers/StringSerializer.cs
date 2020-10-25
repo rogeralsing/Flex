@@ -17,7 +17,7 @@ namespace Flex.ValueSerializers
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteStatic(string value, ref Writer<TBuffer> writer)
         {
-            var maxPotentialLength = Encoding.UTF8.GetMaxByteCount(value.Length);
+            var maxPotentialLength = value.Length * 2; //max two bytes per char
             writer.EnsureContiguous(maxPotentialLength+4);
 
             //first write string bytes, 4 bytes into the span
