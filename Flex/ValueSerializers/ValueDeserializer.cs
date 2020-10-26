@@ -6,6 +6,6 @@ namespace Flex.ValueSerializers
     [PublicAPI]
     public abstract class ValueDeserializer<TValue>
     {
-        public abstract TValue Read(Stream reader);
+        public abstract TValue Read(ref Reader reader);
     }
 }

@@ -28,4 +28,9 @@ namespace Flex.ValueSerializers
             return call;
         }
     }
+    
+    public class StringDeserializer : ValueDeserializer<string>
+    {
+        public override string Read(ref Reader reader) => reader.ReadString();
+    }
 }

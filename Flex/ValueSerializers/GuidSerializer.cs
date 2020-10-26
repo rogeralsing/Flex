@@ -24,4 +24,9 @@ namespace Flex.ValueSerializers
             return call;
         }
     }
+    
+    public class GuidDeserializer : ValueDeserializer<Guid>
+    {
+        public override Guid Read(ref Reader reader) => reader.ReadGuid();
+    }
 }

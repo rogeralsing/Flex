@@ -24,4 +24,9 @@ namespace Flex.ValueSerializers
             return call;
         }
     }
+    
+    public class DateTimeDeserializer : ValueDeserializer<DateTime>
+    {
+        public override DateTime Read(ref Reader reader) => reader.ReadDateTime();
+    }
 }

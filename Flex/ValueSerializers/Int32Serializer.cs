@@ -1,4 +1,5 @@
 using System.Buffers;
+using System.IO;
 using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
 using JetBrains.Annotations;
@@ -22,5 +23,10 @@ namespace Flex.ValueSerializers
             var call = Expression.Call(typedWriter, method, value);
             return call;
         }
+    }
+
+    public class Int32Deserializer : ValueDeserializer<int>
+    {
+        public override int Read(ref Reader reader) => reader.ReadInt32();
     }
 }

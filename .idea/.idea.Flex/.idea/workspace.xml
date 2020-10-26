@@ -8,10 +8,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flex/ValueSerializers/Reader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ValueDeserializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ValueDeserializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,19 +59,20 @@
       <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/MessagePackStuff/aaa.cs" />
       <option value="$PROJECT_DIR$/Flex/MessagePackStuff/ThreadsafeTypeKeyHashTable.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializerDelegate.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Stuff.cs" />
-      <option value="$PROJECT_DIR$/Flex/Program.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ValueSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
+      <option value="$PROJECT_DIR$/Flex/Program.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ValueDeserializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -341,7 +349,13 @@
       <option name="presentableId" value="LOCAL−00037" />
       <updated>1603734447946</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL−00038" summary=".">
+      <created>1603735834028</created>
+      <option name="number" value="LOCAL−00038" />
+      <option name="presentableId" value="LOCAL−00038" />
+      <updated>1603735834028</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

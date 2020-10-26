@@ -59,7 +59,7 @@ namespace Flex
             for (var i = 0; i < 10_000_000; i++)
             {
                 s.Position = 0;
-                binary.Write(message,s);
+                binary.Write (message,s);
             }
             Console.WriteLine(sw.Elapsed.TotalMilliseconds);
         }

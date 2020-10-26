@@ -54,6 +54,7 @@
           <e p="Int32Serializer.cs" t="Include" />
           <e p="ObjectSerializer.cs" t="Include" />
           <e p="ObjectSerializerDelegate.cs" t="Include" />
+          <e p="Reader.cs" t="Include" />
           <e p="StringSerializer.cs" t="Include" />
           <e p="ValueDeserializer.cs" t="Include" />
           <e p="ValueSerializer.cs" t="Include" />

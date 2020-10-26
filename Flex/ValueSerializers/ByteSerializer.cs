@@ -22,4 +22,9 @@ namespace Flex.ValueSerializers
             writer.Write(value);
         }
     }
+    
+    public class ByteDeserializer : ValueDeserializer<byte>
+    {
+        public override byte Read(ref Reader reader) => reader.ReadByte();
+    }
 }

@@ -19,7 +19,7 @@ namespace Flex.ValueSerializers
 
         public override void Write(TValue value, ref Writer<TBuffer> writer, bool writeManifest) => 
             _serializer(value, ref writer, writeManifest);
-
+        
         public override Expression EmitExpression(Expression value, Expression typedWriter, bool includeManifest)
         {
             var target = Expression.Constant(this);
@@ -27,5 +27,10 @@ namespace Flex.ValueSerializers
             var call = Expression.Call(target, method, value, typedWriter, Expression.TrueConstant);
             return call;
         }
+    }
+    
+    public class ObjectDeserializer<TValue> : ValueDeserializer<TValue>
+    {
+        public override TValue Read(ref Reader reader) => default;
     }
 }
