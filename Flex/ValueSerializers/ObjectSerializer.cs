@@ -36,14 +36,13 @@ namespace Flex.ValueSerializers
 
         public override void WriteManifest(ref Writer<TBuffer> writer)
         {
-            if (writer.Session.ShouldWriteTypeManifest(Type, out var knownTypeIndex))
+            if (writer.Session.ShouldWriteManifestIndex(Type, out var knownTypeIndex))
             {
-                writer.Write(ManifestFull);
+                writer.Write(knownTypeIndex);
             }
             else
             {
-                writer.Write(ManifestIndex);
-                writer.Write(knownTypeIndex);
+                writer.Write(Manifest);
             }
         }
         
@@ -61,7 +60,7 @@ namespace Flex.ValueSerializers
         public override Expression EmitExpression(Expression value, Expression typedWriter)
         {
             var target = Expression.Constant(this);
-            var method = GetType().GetMethod("Write");
+            var method = GetType().GetMethod( nameof(Writer<IBufferWriter<byte>>.Write));
             var call = Expression.Call(target,method, value,typedWriter);
             return call;
         }

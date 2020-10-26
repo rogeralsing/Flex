@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Flex.Buffers
 {
@@ -10,7 +11,7 @@ namespace Flex.Buffers
         private readonly Serializer Serializer;
 
         private int _nextObjectId;
-        private LinkedList<Type>? _trackedTypes;
+        private List<Type> _trackedTypes = new List<Type>(100);
 
         public SerializerSession(Serializer serializer)
         {
@@ -20,7 +21,10 @@ namespace Flex.Buffers
                 _objects = new Dictionary<object, int>();
             }
 
-            _nextTypeId = (ushort) serializer.Options.KnownTypes.Length;
+            foreach (var type in serializer.Options.KnownTypes)
+            {
+                TrackSerializedType(type);
+            }
         }
 
         public void TrackSerializedObject(object obj)
@@ -40,40 +44,22 @@ namespace Flex.Buffers
             return _objects.TryGetValue(obj, out objectId);
         }
 
-        public bool ShouldWriteTypeManifest(Type type, out ushort index)
+
+
+        public bool ShouldWriteManifestIndex(Type key, out uint value)
         {
-            return !TryGetValue(type, out index);
-        }
-
-        private bool TryGetValue(Type key, out ushort value)
-        {
-            if (_trackedTypes == null || _trackedTypes.Count == 0)
+            for (var i = 0; i < _trackedTypes.Count; i++)
             {
-                value = 0;
-                return false;
-            }
-
-            var j = _nextTypeId;
-            foreach (var t in _trackedTypes)
-            {
-                if (key == t)
-                {
-                    value = j;
-                    return true;
-                }
-
-                j++;
+                if (key != _trackedTypes[i]) continue;
+                value = 0xfe000000 | (uint)i;
+                return true;
             }
 
             value = 0;
             return false;
         }
 
-        public void TrackSerializedType(Type type)
-        {
-            _trackedTypes ??= new LinkedList<Type>();
-            _trackedTypes.AddLast(type);
-        }
+        public void TrackSerializedType(Type type) => _trackedTypes.Add(type);
 
         public void Dispose()
         {
