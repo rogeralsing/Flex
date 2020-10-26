@@ -8,16 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Flex/ValueSerializers/Reader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flex/Buffers/DeserializerSession.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/Reader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/Reader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ValueDeserializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ValueDeserializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +50,6 @@
       <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
       <option value="$PROJECT_DIR$/Flex/SerializerOptions.cs" />
       <option value="$PROJECT_DIR$/Flex/Reflection/ReflectionEx.cs" />
-      <option value="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" />
       <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/MessagePackStuff/aaa.cs" />
       <option value="$PROJECT_DIR$/Flex/MessagePackStuff/ThreadsafeTypeKeyHashTable.cs" />
@@ -73,6 +67,10 @@
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/Reader.cs" />
+      <option value="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" />
+      <option value="$PROJECT_DIR$/Flex/Buffers/DeserializerSession.cs" />
+      <option value="$PROJECT_DIR$/Flex/Buffers/Reader.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -355,7 +353,13 @@
       <option name="presentableId" value="LOCAL−00038" />
       <updated>1603735834028</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL−00039" summary=".">
+      <created>1603742243681</created>
+      <option name="number" value="LOCAL−00039" />
+      <option name="presentableId" value="LOCAL−00039" />
+      <updated>1603742243681</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

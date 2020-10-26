@@ -1,4 +1,5 @@
 using System.IO;
+using Flex.Buffers;
 using JetBrains.Annotations;
 
 namespace Flex.ValueSerializers

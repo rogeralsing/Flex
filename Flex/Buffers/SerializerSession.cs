@@ -43,6 +43,8 @@ namespace Flex.Buffers
             for (var i = 0; i < _trackedTypes.Count; i++)
             {
                 if (key != _trackedTypes[i]) continue;
+                
+                //shift one byte to the left, add object index serializer manifest
                 value = ((uint) i << 8) | 254;
                 return true;
             }
@@ -54,10 +56,6 @@ namespace Flex.Buffers
         public void TrackSerializedType(Type type)
         {
             _trackedTypes.Add(type);
-        }
-
-        public void Dispose()
-        {
         }
     }
 }

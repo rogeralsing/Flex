@@ -15,7 +15,9 @@
             <e p="SingleSegmentBufferWriter.cs" t="Include" />
             <e p="SpanBufferWriter.cs" t="Include" />
           </e>
+          <e p="DeserializerSession.cs" t="Include" />
           <e p="LICENSE" t="Include" />
+          <e p="Reader.cs" t="Include" />
           <e p="README.md" t="Include" />
           <e p="SerializerSession.cs" t="Include" />
           <e p="Writer.cs" t="Include" />
@@ -54,7 +56,6 @@
           <e p="Int32Serializer.cs" t="Include" />
           <e p="ObjectSerializer.cs" t="Include" />
           <e p="ObjectSerializerDelegate.cs" t="Include" />
-          <e p="Reader.cs" t="Include" />
           <e p="StringSerializer.cs" t="Include" />
           <e p="ValueDeserializer.cs" t="Include" />
           <e p="ValueSerializer.cs" t="Include" />
