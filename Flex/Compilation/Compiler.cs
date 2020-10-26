@@ -25,17 +25,15 @@ namespace Flex.Compilation
             {
                 ValueSerializer<TBuffer> Create<TValue>()
                 {
-                    var del = CompileSerializer<TValue>(type);
+                    var del = CompileSerializer<TValue>(type,false);
                     var objectSerializer = new ObjectSerializer<TValue, TStyle, TBuffer>(del);
                     return objectSerializer;
                 }
             });
         }
 
-        public static ObjectSerializerDelegate<TBuffer, TStyle, TValue> CompileSerializer<TValue>(Type type)
+        public static ObjectSerializerDelegate<TBuffer, TStyle, TValue> CompileSerializer<TValue>(Type type, bool includeManifest)
         {
-
-
             var writerType = typeof(Writer<TBuffer>).MakeByRefType();
 
             var fields = type.GetFieldsForType();
@@ -49,20 +47,22 @@ namespace Flex.Compilation
 
 
             var expressions = new List<Expression>();
-            
 
-            var manifest= Encoding
-                .UTF8
-                .GetBytes(type.FullName!)
-                .Prepend((byte)255)
-                .ToArray();
-            var typeExpression = Expression.Constant(type);
-            var manifestExpression = Expression.Constant(manifest);
-            
-            var method = typeof(Writer<TBuffer>).GetMethod( nameof(Writer<TBuffer>.WriteManifest));
-            var writeManifestCall = Expression.Call(typedWriter,method, typeExpression,manifestExpression);
-            expressions.Add(writeManifestCall);
-            
+
+            if (includeManifest)
+            {
+                var manifest = Encoding
+                    .UTF8
+                    .GetBytes(type.FullName!)
+                    .Prepend((byte) 255)
+                    .ToArray();
+                var typeExpression = Expression.Constant(type);
+                var manifestExpression = Expression.Constant(manifest);
+
+                var method = typeof(Writer<TBuffer>).GetMethod(nameof(Writer<TBuffer>.WriteManifest));
+                var writeManifestCall = Expression.Call(typedWriter, method, typeExpression, manifestExpression);
+                expressions.Add(writeManifestCall);
+            }
 
             for (var index = 0; index < fields.Length; index++)
             {
