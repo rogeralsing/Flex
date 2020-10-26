@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 namespace Flex.ValueSerializers
 {
     [PublicAPI]
-    public class ObjectSerializer<TValue, TStyle, TBuffer> : ValueSerializer<TValue, TBuffer>
+    public sealed class ObjectSerializer<TValue, TStyle, TBuffer> : ValueSerializer<TValue, TBuffer>
         where TBuffer : IBufferWriter<byte>
     {
         private readonly ObjectSerializerDelegate<TBuffer, TStyle, TValue> 

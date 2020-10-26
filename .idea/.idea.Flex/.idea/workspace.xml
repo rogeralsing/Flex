@@ -9,6 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Serializer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +51,6 @@
       <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/MessagePackStuff/aaa.cs" />
       <option value="$PROJECT_DIR$/Flex/MessagePackStuff/ThreadsafeTypeKeyHashTable.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ValueSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
@@ -59,9 +59,10 @@
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializerDelegate.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Stuff.cs" />
+      <option value="$PROJECT_DIR$/Flex/Program.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ValueSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Program.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
     </changedPaths>
   </component>
@@ -327,7 +328,13 @@
       <option name="presentableId" value="LOCAL−00035" />
       <updated>1603733221884</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL−00036" summary=".">
+      <created>1603734065708</created>
+      <option name="number" value="LOCAL−00036" />
+      <option name="presentableId" value="LOCAL−00036" />
+      <updated>1603734065708</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
