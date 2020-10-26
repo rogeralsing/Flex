@@ -1,7 +1,4 @@
-using System;
 using System.Buffers;
-using System.Linq;
-using System.Text;
 using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
 using JetBrains.Annotations;
@@ -14,8 +11,6 @@ namespace Flex.ValueSerializers
     public class ObjectSerializer<TValue, TStyle, TBuffer> : ValueSerializer<TValue, TBuffer>
         where TBuffer : IBufferWriter<byte>
     {
-        public const byte ManifestFull = 255;
-        public const byte ManifestIndex = 254;
         private readonly ObjectSerializerDelegate<TBuffer, TStyle, TValue> _serializer;
         
         public ObjectSerializer(ObjectSerializerDelegate<TBuffer, TStyle, TValue> serializer)
@@ -25,14 +20,14 @@ namespace Flex.ValueSerializers
 
         public override void Write(TValue value, ref Writer<TBuffer> writer, bool writeManifest)
         {
-            _serializer(value, ref writer);
+            _serializer(value, ref writer, writeManifest);
         }
 
         public override Expression EmitExpression(Expression value, Expression typedWriter)
         {
             var target = Expression.Constant(this);
             var method = GetType().GetMethod(nameof(Write));
-            var call = Expression.Call(target, method, value, typedWriter);
+            var call = Expression.Call(target, method, value, typedWriter, Expression.TrueConstant);
             return call;
         }
     }

@@ -1,12 +1,14 @@
 // ReSharper disable UnusedTypeParameter
 
-namespace Flex.Generics
+namespace Flex.SerializeReferences
 {
-    internal class Graph
-    {
-    }
 
-    internal class Tree
-    {
-    }
+        internal class Graph
+        {
+        }
+
+        internal class Tree
+        {
+        }
+
 }

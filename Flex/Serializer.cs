@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using Flex.Buffers;
 using Flex.Generics;
-
+using Flex.SerializeReferences;
 namespace Flex
 {
     public class Serializer
@@ -42,19 +42,21 @@ namespace Flex
         
         public void SerializeUntyped<TBuffer>(object value, ref Writer<TBuffer> writer) where TBuffer : IBufferWriter<byte>
         {
-            var s = Serializers<TBuffer, Tree>.ForType(value.GetType());
-            s.WriteObject(value, ref writer, true);
+            if (_preserveObjectReferences)
+                Serializers<TBuffer, Graph>.ForType(value.GetType()).WriteObject(value,ref writer,true);
+            else 
+                Serializers<TBuffer, Tree>.ForType(value.GetType()).WriteObject(value,ref writer,true);
             writer.Commit();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static void Serialize<T, TBuffer>(T value, Writer<TBuffer> writer, bool preserveReferences)
+        private static void Serialize<T, TBuffer>(T value, Writer<TBuffer> writer, bool preserveObjectReferences)
             where TBuffer : IBufferWriter<byte>
         {
-            if (preserveReferences)
-                TypedSerializers<TBuffer, Graph, T>.SerializeWithManifest(value, ref writer);
+            if (preserveObjectReferences)
+                TypedSerializers<TBuffer, Graph, T>.Serialize(value, ref writer, true);
             else
-                TypedSerializers<TBuffer, Tree, T>.SerializeWithManifest(value, ref writer);
+                TypedSerializers<TBuffer, Tree, T>.Serialize(value, ref writer, true);
 
             writer.Commit();
         }

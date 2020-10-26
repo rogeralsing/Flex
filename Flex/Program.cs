@@ -31,10 +31,10 @@ namespace Flex
             };
 
             
-
+            BenchmarkFlex(message);
         //    BenchmarkBaseline(message);
         BenchmarkFlexUntyped(message);
-            BenchmarkFlex(message);
+            
            
         //    BenchmarkApex(message);
         }
