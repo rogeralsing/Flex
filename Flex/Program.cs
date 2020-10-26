@@ -8,7 +8,6 @@ namespace Flex
 {
     public sealed class TypicalMessage
     {
-
         public string StringProp { get; set; } = "";
 
         public int IntProp { get; set; }

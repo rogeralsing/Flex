@@ -301,13 +301,13 @@ namespace Flex.Buffers
         public void Write(string value)
         {
             var maxPotentialLength = value.Length * 2; //max two bytes per char
-            EnsureContiguous(maxPotentialLength + 4);
+            EnsureContiguous(maxPotentialLength + 2);
             var span = WritableSpan;
             //first write string bytes, 4 bytes into the span
-            var actualLength = Encoding.UTF8.GetBytes(value, span[4..]);
+            var actualLength = Encoding.UTF8.GetBytes(value, span[2..]);
             //then write the actual length at 0 bytes into the span
-            BitConverter.TryWriteBytes(span, actualLength);
-            AdvanceSpan(actualLength + 4);
+            BitConverter.TryWriteBytes(span, (ushort)actualLength);
+            AdvanceSpan(actualLength + 2);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

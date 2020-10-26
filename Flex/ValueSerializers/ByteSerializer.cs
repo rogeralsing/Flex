@@ -13,7 +13,7 @@ namespace Flex.ValueSerializers
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteManifestStatic(ref Writer<TBuffer> writer)
         {
-            WriteStatic(1, ref writer);
+            writer.Write((byte)1);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -29,7 +29,7 @@ namespace Flex.ValueSerializers
 
         public override void Write(byte value, ref Writer<TBuffer> writer)
         {
-            WriteStatic(value, ref writer);
+            writer.Write(value);
         }
     }
 }

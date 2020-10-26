@@ -8,7 +8,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,22 +43,22 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Flex/Generics/Stuff.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ValueSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
       <option value="$PROJECT_DIR$/Flex/SerializerOptions.cs" />
-      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" />
       <option value="$PROJECT_DIR$/Flex/Reflection/ReflectionEx.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializerDelegate.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Program.cs" />
+      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -219,7 +227,13 @@
       <option name="presentableId" value="LOCAL−00019" />
       <updated>1603653590385</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL−00020" summary="static generic things are slow to access">
+      <created>1603653734786</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1603653734786</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +260,8 @@
     <MESSAGE value="Baseline benchmark" />
     <MESSAGE value="known types" />
     <MESSAGE value="Inline expressions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inline expressions" />
+    <MESSAGE value="static generic things are slow to access" />
+    <option name="LAST_COMMIT_MESSAGE" value="static generic things are slow to access" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
