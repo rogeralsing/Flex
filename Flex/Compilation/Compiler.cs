@@ -74,8 +74,8 @@ namespace Flex.Compilation
                 }
                 else
                 {
-                    var writeField = serializer.EmitExpression(memberAccess, typedWriter, true);
-                    expressions.Add(writeField);
+                   //get serializer from value.GetType, slow-path to support polymorphism
+                   
                 }
             }
 

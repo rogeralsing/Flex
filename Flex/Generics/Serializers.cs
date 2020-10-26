@@ -1,5 +1,6 @@
 using System;
 using System.Buffers;
+using System.Runtime.CompilerServices;
 using Flex.Compilation;
 using Flex.MessagePackStuff;
 using Flex.ValueSerializers;
@@ -13,6 +14,7 @@ namespace Flex.Generics
         private static readonly ThreadsafeTypeKeyHashTable<ValueSerializer<TBuffer>> Cache =
             GetDefaultSerializers();
 
+        
         private static ThreadsafeTypeKeyHashTable<ValueSerializer<TBuffer>> GetDefaultSerializers()
         {
             var ht = new ThreadsafeTypeKeyHashTable<ValueSerializer<TBuffer>>();
@@ -24,6 +26,7 @@ namespace Flex.Generics
             return ht;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ValueSerializer<TBuffer> ForType(Type type)
         {
             if (Cache.TryGetValue(type, out var s)) return s;
@@ -32,6 +35,9 @@ namespace Flex.Generics
             Cache.TryAdd(type, res);
             return res;
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ValueSerializer<TBuffer> ForValue(object value) => ForType(value.GetType());
     }
 
     public static class TypedSerializers<TBuffer, TStyle, TValue> where TBuffer : IBufferWriter<byte>

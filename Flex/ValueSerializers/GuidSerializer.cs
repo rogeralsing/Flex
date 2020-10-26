@@ -1,6 +1,5 @@
 using System;
 using System.Buffers;
-using System.Runtime.CompilerServices;
 using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
 using JetBrains.Annotations;
