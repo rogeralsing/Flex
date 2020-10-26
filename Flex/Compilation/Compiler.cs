@@ -25,7 +25,7 @@ namespace Flex.Compilation
             {
                 ValueSerializer<TBuffer> Create<TValue>()
                 {
-                    var del = CompileSerializer<TValue>(type, false);
+                    var del = CompileSerializer<TValue>(type, true);
                     var objectSerializer = new ObjectSerializer<TValue, TStyle, TBuffer>(del);
                     return objectSerializer;
                 }
