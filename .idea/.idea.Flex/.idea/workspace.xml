@@ -8,8 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Serializer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +32,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/5B/BitConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BB3BBCDE-AB28-4F8F-8DCD-883F9DCA1AAF/3/FastExpressionCompiler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/BF/Span.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/2C6/DynamicILGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/3B1/Unsafe.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/45/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/185/EncoderReplacementFallback.cs" root0="SKIP_HIGHLIGHTING" />
@@ -40,19 +45,19 @@
       <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
       <option value="$PROJECT_DIR$/Flex/SerializerOptions.cs" />
       <option value="$PROJECT_DIR$/Flex/Reflection/ReflectionEx.cs" />
-      <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializerDelegate.cs" />
       <option value="$PROJECT_DIR$/Flex/Program.cs" />
-      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/GuidSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/DateTimeSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
-      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" />
+      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
+      <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
+      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -239,7 +244,13 @@
       <option name="presentableId" value="LOCAL−00022" />
       <updated>1603693687326</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL−00023" summary="faster manifest">
+      <created>1603700981489</created>
+      <option name="number" value="LOCAL−00023" />
+      <option name="presentableId" value="LOCAL−00023" />
+      <updated>1603700981489</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +279,8 @@
     <MESSAGE value="Inline expressions" />
     <MESSAGE value="static generic things are slow to access" />
     <MESSAGE value="remove unused code" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove unused code" />
+    <MESSAGE value="faster manifest" />
+    <option name="LAST_COMMIT_MESSAGE" value="faster manifest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -287,17 +299,17 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Flex/Serializer.cs</url>
-          <line>49</line>
-          <properties documentPath="$PROJECT_DIR$/Flex/Serializer.cs" initialLine="47" containingFunctionPresentation="method 'Serialize'">
+          <url>file://$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs</url>
+          <line>54</line>
+          <properties documentPath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" initialLine="54" containingFunctionPresentation="method 'EmitExpression'">
             <startOffsets>
-              <option value="1790" />
+              <option value="1721" />
             </startOffsets>
             <endOffsets>
-              <option value="1818" />
+              <option value="1760" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

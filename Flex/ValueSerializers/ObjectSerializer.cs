@@ -36,14 +36,7 @@ namespace Flex.ValueSerializers
 
         public override void WriteManifest(ref Writer<TBuffer> writer)
         {
-            if (writer.Session.ShouldWriteManifestIndex(Type, out var knownTypeIndex))
-            {
-                writer.Write(knownTypeIndex);
-            }
-            else
-            {
-                writer.Write(Manifest);
-            }
+            writer.WriteManifest(Type,Manifest);
         }
         
         //not sure why this is slower, because _serializer was not static readonly?
@@ -60,7 +53,7 @@ namespace Flex.ValueSerializers
         public override Expression EmitExpression(Expression value, Expression typedWriter)
         {
             var target = Expression.Constant(this);
-            var method = GetType().GetMethod( nameof(Writer<IBufferWriter<byte>>.Write));
+            var method = GetType().GetMethod(nameof(Write));
             var call = Expression.Call(target,method, value,typedWriter);
             return call;
         }

@@ -46,10 +46,8 @@ namespace Flex
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void Serialize<TValue,TBuffer,TStyle>(TValue value, ref Writer<TBuffer> writer) where TBuffer:IBufferWriter<byte>
         {
-            var s = TypedSerializers<TBuffer, TStyle,TValue>.Serializer;
-             s.WriteManifest(ref writer);
-            s.Write(value, ref writer);
-          //  s(value, ref writer);
+            var s = TypedSerializers<TBuffer, TStyle,TValue>.SerializerDelegate;
+            s(value, ref writer);
             writer.Commit();
         }
     }

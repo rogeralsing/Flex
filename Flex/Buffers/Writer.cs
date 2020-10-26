@@ -311,6 +311,19 @@ namespace Flex.Buffers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void WriteManifest(Type type, byte[] manifest)
+        {
+            if (Session.ShouldWriteManifestIndex(type, out var knownTypeIndex))
+            {
+                Write(knownTypeIndex);
+            }
+            else
+            {
+                Write(manifest);
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void WriteVarInt(ulong value)
         {
             // Since this method writes a ulong plus a ushort worth of bytes unconditionally, ensure that there is sufficient space.

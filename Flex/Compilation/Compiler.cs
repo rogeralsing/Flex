@@ -2,6 +2,7 @@ using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
 using Flex.Generics;
@@ -33,6 +34,8 @@ namespace Flex.Compilation
 
         public static ObjectSerializerDelegate<TBuffer, TStyle, TValue> CompileSerializer<TValue>(Type type)
         {
+
+
             var writerType = typeof(Writer<TBuffer>).MakeByRefType();
 
             var fields = type.GetFieldsForType();
@@ -46,6 +49,20 @@ namespace Flex.Compilation
 
 
             var expressions = new List<Expression>();
+            
+
+            var manifest= Encoding
+                .UTF8
+                .GetBytes(type.FullName!)
+                .Prepend((byte)255)
+                .ToArray();
+            var typeExpression = Expression.Constant(type);
+            var manifestExpression = Expression.Constant(manifest);
+            
+            var method = typeof(Writer<TBuffer>).GetMethod( nameof(Writer<TBuffer>.WriteManifest));
+            var writeManifestCall = Expression.Call(typedWriter,method, typeExpression,manifestExpression);
+            expressions.Add(writeManifestCall);
+            
 
             for (var index = 0; index < fields.Length; index++)
             {

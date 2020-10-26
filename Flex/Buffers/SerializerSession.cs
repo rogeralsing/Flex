@@ -51,7 +51,7 @@ namespace Flex.Buffers
             for (var i = 0; i < _trackedTypes.Count; i++)
             {
                 if (key != _trackedTypes[i]) continue;
-                value = 0xfe000000 | (uint)i;
+                value = ((uint)i << 8) | 254;
                 return true;
             }
 
