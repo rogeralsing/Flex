@@ -33,7 +33,7 @@ namespace Flex
             
 
         //    BenchmarkBaseline(message);
-            BenchmarkFlex(message);
+      //      BenchmarkFlex(message);
             BenchmarkFlexUntyped(message);
         //    BenchmarkApex(message);
         }
@@ -98,11 +98,10 @@ namespace Flex
             var bytes = new byte[100];
             var b2 = new SingleSegmentBuffer(bytes);
             var writer2 = new Writer<SingleSegmentBuffer>(b2, session);
-            var d = TypedSerializers<SingleSegmentBuffer, Tree, TypicalMessage>.SerializeWithManifest;
-            d(message, ref writer2);
-            var size = writer2.BufferPos;
+            serializer.SerializeUntyped(message, ref writer2);
             
-            Console.WriteLine("Benchmarking Flex Untyped " + size);
+            
+            Console.WriteLine("Benchmarking Flex Untyped");
             var sw = Stopwatch.StartNew();
             for (var i = 0; i < 10_000_000; i++)
             {

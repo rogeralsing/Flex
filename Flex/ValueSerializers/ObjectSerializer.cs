@@ -17,8 +17,8 @@ namespace Flex.ValueSerializers
         public const byte ManifestFull = 255;
         public const byte ManifestIndex = 254;
         private readonly ObjectSerializerDelegate<TBuffer, TStyle, TValue> _serializer;
-        private readonly byte[] Manifest = GetManifest();
-        private readonly Type Type = typeof(TValue);
+        private readonly byte[] _manifest = GetManifest();
+        private readonly Type _type = typeof(TValue);
 
         public ObjectSerializer(ObjectSerializerDelegate<TBuffer, TStyle, TValue> serializer)
         {
@@ -36,14 +36,8 @@ namespace Flex.ValueSerializers
 
         public override void WriteManifest(ref Writer<TBuffer> writer)
         {
-            writer.WriteManifest(Type, Manifest);
+            writer.WriteManifest(_type, _manifest);
         }
-
-        //not sure why this is slower, because _serializer was not static readonly?
-        // public static void WriteStatic(TValue value, ref Writer<TBuffer> writer)
-        // {
-        //     _serializer(value, ref writer);
-        // }
 
         public override void Write(TValue value, ref Writer<TBuffer> writer)
         {

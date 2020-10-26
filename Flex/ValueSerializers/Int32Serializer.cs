@@ -11,15 +11,9 @@ namespace Flex.ValueSerializers
     {
         private const int Size = sizeof(int);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteManifestStatic(ref Writer<TBuffer> writer)
-        {
-            writer.Write((byte) 2);
-        }
-
         public override void WriteManifest(ref Writer<TBuffer> writer)
         {
-            WriteManifestStatic(ref writer);
+            writer.Write((byte) 2);
         }
 
         public override void Write(int value, ref Writer<TBuffer> writer)

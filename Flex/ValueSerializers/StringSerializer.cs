@@ -10,12 +10,6 @@ namespace Flex.ValueSerializers
     public class StringSerializer<TBuffer> : ValueSerializer<string, TBuffer> where TBuffer : IBufferWriter<byte>
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteManifestStatic(ref Writer<TBuffer> writer)
-        {
-            writer.Write((byte) 5);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteStatic(string value, ref Writer<TBuffer> writer)
         {
             writer.Write(value);
@@ -23,7 +17,7 @@ namespace Flex.ValueSerializers
 
         public override void WriteManifest(ref Writer<TBuffer> writer)
         {
-            WriteManifestStatic(ref writer);
+            writer.Write((byte) 5);
         }
 
         public override void Write(string value, ref Writer<TBuffer> writer)

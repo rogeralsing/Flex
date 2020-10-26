@@ -2,6 +2,7 @@ using System;
 using System.Buffers;
 using System.Collections.Concurrent;
 using Flex.Compilation;
+using Flex.MessagePackStuff;
 using Flex.ValueSerializers;
 using JetBrains.Annotations;
 
@@ -10,19 +11,18 @@ namespace Flex.Generics
     [PublicAPI]
     public static class Serializers<TBuffer, TStyle> where TBuffer : IBufferWriter<byte>
     {
-        private static readonly ConcurrentDictionary<Type, ValueSerializer<TBuffer>> Cache =
+        private static readonly ThreadsafeTypeKeyHashTable<ValueSerializer<TBuffer>> Cache =
             GetDefaultSerializers();
 
-        private static ConcurrentDictionary<Type, ValueSerializer<TBuffer>> GetDefaultSerializers()
+        private static ThreadsafeTypeKeyHashTable<ValueSerializer<TBuffer>> GetDefaultSerializers()
         {
-            return new ConcurrentDictionary<Type, ValueSerializer<TBuffer>>
-            {
-                [typeof(byte)] = new ByteSerializer<TBuffer>(),
-                [typeof(int)] = new Int32Serializer<TBuffer>(),
-                [typeof(string)] = new StringSerializer<TBuffer>(),
-                [typeof(Guid)] = new GuidSerializer<TBuffer>(),
-                [typeof(DateTime)] = new DateTimeSerializer<TBuffer>()
-            };
+            var ht = new ThreadsafeTypeKeyHashTable<ValueSerializer<TBuffer>>();
+            ht.TryAdd(typeof(byte), new ByteSerializer<TBuffer>());
+            ht.TryAdd(typeof(int), new Int32Serializer<TBuffer>());
+            ht.TryAdd(typeof(string), new StringSerializer<TBuffer>());
+            ht.TryAdd(typeof(Guid), new GuidSerializer<TBuffer>());
+            ht.TryAdd(typeof(DateTime), new DateTimeSerializer<TBuffer>());
+            return ht;
         }
 
         public static ValueSerializer<TBuffer> ForType(Type type)

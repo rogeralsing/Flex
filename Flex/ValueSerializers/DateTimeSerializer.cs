@@ -12,15 +12,9 @@ namespace Flex.ValueSerializers
     {
         private const int Size = 9;
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteManifestStatic(ref Writer<TBuffer> writer)
-        {
-            writer.Write((byte) 4);
-        }
-
         public override void WriteManifest(ref Writer<TBuffer> writer)
         {
-            WriteManifestStatic(ref writer);
+            writer.Write((byte) 4);
         }
 
         public override void Write(DateTime value, ref Writer<TBuffer> writer)
