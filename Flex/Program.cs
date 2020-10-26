@@ -6,17 +6,23 @@ using Apex.Serialization;
 using Flex.Buffers;
 using Flex.Buffers.Adaptors;
 using Flex.Generics;
+using MessagePack;
 
 namespace Flex
 {
+    [MessagePackObject]
     public sealed class TypicalMessage
     {
+        [Key(0)]
         public string StringProp { get; set; } = "";
 
+        [Key(1)]
         public int IntProp { get; set; }
 
+        [Key(2)]
         public Guid GuidProp { get; set; }
-
+        
+        [Key(3)]
         public DateTime DateProp { get; set; }
     }
 
@@ -38,8 +44,22 @@ namespace Flex
             BenchmarkBaseline(message);
             BenchmarkFlex(message);
             BenchmarkApex(message);
+            BenchmarkMessagePack(message);
         }
 
+        private static void BenchmarkMessagePack(TypicalMessage message)
+        {
+            var bytes = new byte[100];
+            Console.WriteLine("Benchmarking MessagePack " );
+            var sw = Stopwatch.StartNew();
+            for (var i = 0; i < 10_000_000; i++)
+            {
+                var w = new MessagePackWriter(new SingleSegmentBuffer(bytes));
+                MessagePackSerializer.Serialize(ref w, message);
+            }
+            Console.WriteLine(sw.Elapsed.TotalMilliseconds);
+        }
+        
         private static void BenchmarkApex(TypicalMessage message)
         {
             var s = new MemoryStream();

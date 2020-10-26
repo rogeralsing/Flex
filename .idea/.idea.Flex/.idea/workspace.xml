@@ -8,9 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Flex.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Flex.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
     </list>
@@ -29,6 +27,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/224/RuntimeHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../asynkron/FastExpressionCompiler/src/FastExpressionCompiler.LightExpression/Expression.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/195/UTF8Encoding.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28CF7E6F-C151-4BAD-8201-DBDFB7E874AD/14/MessagePackWriter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/176/ASCIIUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/5B/BitConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BB3BBCDE-AB28-4F8F-8DCD-883F9DCA1AAF/3/FastExpressionCompiler.cs" root0="SKIP_HIGHLIGHTING" />
@@ -56,8 +55,8 @@
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
+      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/Program.cs" />
     </changedPaths>
   </component>
@@ -269,7 +268,13 @@
       <option name="presentableId" value="LOCAL−00026" />
       <updated>1603708855305</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL−00027" summary="faster manifest">
+      <created>1603715911985</created>
+      <option name="number" value="LOCAL−00027" />
+      <option name="presentableId" value="LOCAL−00027" />
+      <updated>1603715911985</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,13 +337,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Flex/Program.cs</url>
-          <line>83</line>
+          <line>105</line>
           <properties documentPath="$PROJECT_DIR$/Flex/Program.cs" initialLine="53" containingFunctionPresentation="method 'Benchmark'">
             <startOffsets>
-              <option value="2637" />
+              <option value="3485" />
             </startOffsets>
             <endOffsets>
-              <option value="2670" />
+              <option value="3527" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="22" />
