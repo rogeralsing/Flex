@@ -1,7 +1,5 @@
-using System;
 using System.Buffers;
 using System.Runtime.CompilerServices;
-using System.Text;
 using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
 using JetBrains.Annotations;
@@ -14,7 +12,7 @@ namespace Flex.ValueSerializers
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteManifestStatic(ref Writer<TBuffer> writer)
         {
-            ByteSerializer<TBuffer>.WriteStatic(5, ref writer);
+            writer.Write((byte)5);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
