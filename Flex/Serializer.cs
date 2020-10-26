@@ -39,6 +39,14 @@ namespace Flex
         {
             Serialize(value, writer, _preserveObjectReferences);
         }
+        
+        public void SerializeUntyped<TBuffer>(object value, ref Writer<TBuffer> writer) where TBuffer : IBufferWriter<byte>
+        {
+            var s = Serializers<TBuffer, Tree>.ForType(value.GetType());
+            s.WriteManifest(ref writer);
+            s.WriteObject(value, ref writer);
+            writer.Commit();
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void Serialize<T, TBuffer>(T value, Writer<TBuffer> writer, bool preserveReferences)

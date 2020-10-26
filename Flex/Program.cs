@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -41,24 +42,25 @@ namespace Flex
 
             
 
-            BenchmarkBaseline(message);
+        //    BenchmarkBaseline(message);
             BenchmarkFlex(message);
-            BenchmarkApex(message);
-            BenchmarkMessagePack(message);
+            BenchmarkFlexUntyped(message);
+        //    BenchmarkApex(message);
+       //     BenchmarkMessagePack(message);
         }
 
-        private static void BenchmarkMessagePack(TypicalMessage message)
-        {
-            var bytes = new byte[1000];
-            Console.WriteLine("Benchmarking MessagePack " );
-            var sw = Stopwatch.StartNew();
-            for (var i = 0; i < 10_000_000; i++)
-            {
-                var w = new MessagePackWriter(new SingleSegmentBuffer(bytes));
-                MessagePackSerializer.Serialize(ref w, message);
-            }
-            Console.WriteLine(sw.Elapsed.TotalMilliseconds);
-        }
+        // private static void BenchmarkMessagePack(TypicalMessage message)
+        // {
+        //     var bytes = new byte[1000];
+        //     Console.WriteLine("Benchmarking MessagePack " );
+        //     var sw = Stopwatch.StartNew();
+        //     
+        //     for (var i = 0; i < 10_000_000; i++)
+        //     {
+        //         MessagePackSerializer.Serialize(typeof(TypicalMessage),new SingleSegmentBuffer(bytes), message);
+        //     }
+        //     Console.WriteLine(sw.Elapsed.TotalMilliseconds);
+        // }
         
         private static void BenchmarkApex(TypicalMessage message)
         {
@@ -75,6 +77,7 @@ namespace Flex
            
             binary.Write(message,s);
             Console.WriteLine("Benchmarking Apex " + s.Length);
+            binary.Write(message,s);
             var sw = Stopwatch.StartNew();
             for (var i = 0; i < 10_000_000; i++)
             {
@@ -103,9 +106,33 @@ namespace Flex
             {
                 var b = new SingleSegmentBuffer(bytes);
                 var writer = new Writer<SingleSegmentBuffer>(b, session);
-                serializer.Serialize(message, ref writer);
+                serializer.Serialize((object)message, ref writer);
                 // ss(message, ref writer);
                 // writer.Commit();
+            }
+
+            Console.WriteLine(sw.Elapsed.TotalMilliseconds);
+        }
+        
+        private static void BenchmarkFlexUntyped(TypicalMessage message)
+        {
+            var serializer = new Serializer(new SerializerOptions(false, new[] {typeof(TypicalMessage)}));
+
+            var session = serializer.CreateSession();
+            var bytes = new byte[100];
+            var b2 = new SingleSegmentBuffer(bytes);
+            var writer2 = new Writer<SingleSegmentBuffer>(b2, session);
+            var d = TypedSerializers<SingleSegmentBuffer, Tree, TypicalMessage>.SerializeWithManifest;
+            d(message, ref writer2);
+            var size = writer2.BufferPos;
+            
+            Console.WriteLine("Benchmarking Flex Untyped " + size);
+            var sw = Stopwatch.StartNew();
+            for (var i = 0; i < 10_000_000; i++)
+            {
+                var b = new SingleSegmentBuffer(bytes);
+                var writer = new Writer<SingleSegmentBuffer>(b, session);
+                serializer.SerializeUntyped(message, ref writer);
             }
 
             Console.WriteLine(sw.Elapsed.TotalMilliseconds);

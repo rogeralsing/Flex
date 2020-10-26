@@ -9,6 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Generics/Serializers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Serializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,22 +22,26 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/978A2485-DCDD-4403-B3BF-38D467F98616/1A/IBinary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/32/String.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/978A2485-DCDD-4403-B3BF-38D467F98616/5/Settings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/2F6/MemoryStream.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/224/RuntimeHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28CF7E6F-C151-4BAD-8201-DBDFB7E874AD/5/MessagePackSerializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../asynkron/FastExpressionCompiler/src/FastExpressionCompiler.LightExpression/Expression.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/195/UTF8Encoding.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28CF7E6F-C151-4BAD-8201-DBDFB7E874AD/14/MessagePackWriter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/176/ASCIIUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/5B/BitConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BB3BBCDE-AB28-4F8F-8DCD-883F9DCA1AAF/3/FastExpressionCompiler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28CF7E6F-C151-4BAD-8201-DBDFB7E874AD/7/MessagePackSerializer.NonGeneric.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/BF/Span.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/2C6/DynamicILGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/3B1/Unsafe.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/2D/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/45/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/185/EncoderReplacementFallback.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28CF7E6F-C151-4BAD-8201-DBDFB7E874AD/41/ThreadsafeTypeKeyHashTable.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -52,9 +59,9 @@
       <option value="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
-      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
       <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
+      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Program.cs" />
     </changedPaths>
   </component>
@@ -278,7 +285,13 @@
       <option name="presentableId" value="LOCAL−00028" />
       <updated>1603720291202</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL−00029" summary=".">
+      <created>1603723455729</created>
+      <option name="number" value="LOCAL−00029" />
+      <option name="presentableId" value="LOCAL−00029" />
+      <updated>1603723455729</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +322,8 @@
     <MESSAGE value="remove unused code" />
     <MESSAGE value="faster manifest" />
     <MESSAGE value="MessagePack, why so slow?" />
-    <option name="LAST_COMMIT_MESSAGE" value="MessagePack, why so slow?" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -339,19 +353,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Flex/Program.cs</url>
-          <line>105</line>
-          <properties documentPath="$PROJECT_DIR$/Flex/Program.cs" initialLine="53" containingFunctionPresentation="method 'Benchmark'">
-            <startOffsets>
-              <option value="3432" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3474" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
