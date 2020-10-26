@@ -85,6 +85,8 @@ namespace Flex.Buffers
             _previousBuffersSize = default;
         }
 
+        public int BufferPos => _bufferPos;
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal Writer(TBufferWriter output, Span<byte> span, SerializerSession session)
         {
@@ -309,11 +311,11 @@ namespace Flex.Buffers
         {
             var maxPotentialLength = value.Length * 2; //max two bytes per char
             EnsureContiguous(maxPotentialLength + 2);
-            var span = WritableSpan;
+            
             //first write string bytes, 4 bytes into the span
-            var actualLength = Encoding.UTF8.GetBytes(value, span[2..]);
+            var actualLength = Encoding.UTF8.GetBytes(value, WritableSpan[2..]);
             //then write the actual length at 0 bytes into the span
-            BitConverter.TryWriteBytes(span, (ushort) actualLength);
+            BitConverter.TryWriteBytes(WritableSpan, (ushort) actualLength);
             AdvanceSpan(actualLength + 2);
         }
 

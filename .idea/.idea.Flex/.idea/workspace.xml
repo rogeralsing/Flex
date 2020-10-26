@@ -8,9 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Flex.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Flex.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Serializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +24,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/32/String.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/978A2485-DCDD-4403-B3BF-38D467F98616/5/Settings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/2F6/MemoryStream.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/EB067793-5C3F-4219-AEF1-3AB117C20649/224/RuntimeHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../asynkron/FastExpressionCompiler/src/FastExpressionCompiler.LightExpression/Expression.cs" root0="SKIP_HIGHLIGHTING" />
@@ -51,11 +54,11 @@
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/StringSerializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
+      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
       <option value="$PROJECT_DIR$/Flex/Program.cs" />
-      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -260,7 +263,13 @@
       <option name="presentableId" value="LOCAL−00025" />
       <updated>1603707185486</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL−00026" summary="faster manifest">
+      <created>1603708855305</created>
+      <option name="number" value="LOCAL−00026" />
+      <option name="presentableId" value="LOCAL−00026" />
+      <updated>1603708855305</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,13 +322,26 @@
           <line>54</line>
           <properties documentPath="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializer.cs" initialLine="54" containingFunctionPresentation="method 'EmitExpression'">
             <startOffsets>
-              <option value="1721" />
+              <option value="1714" />
             </startOffsets>
             <endOffsets>
-              <option value="1760" />
+              <option value="1753" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Flex/Program.cs</url>
+          <line>83</line>
+          <properties documentPath="$PROJECT_DIR$/Flex/Program.cs" initialLine="53" containingFunctionPresentation="method 'Benchmark'">
+            <startOffsets>
+              <option value="2637" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2670" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

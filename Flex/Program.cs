@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
+using Apex.Serialization;
 using Flex.Buffers;
 using Flex.Buffers.Adaptors;
+using Flex.Generics;
 
 namespace Flex
 {
@@ -21,7 +24,6 @@ namespace Flex
     {
         private static void Main(string[] args)
         {
-            var serializer = new Serializer(new SerializerOptions(false, new[] {typeof(TypicalMessage)}));
 
             var message = new TypicalMessage
             {
@@ -31,27 +33,57 @@ namespace Flex
                 StringProp = "Hello"
             };
 
-            var session = serializer.CreateSession();
-            var bytes = new byte[100];
-            // s.Serialize(message,stream);
-            var b2 = new SingleSegmentBuffer(bytes);
-            var writer2 = new Writer<SingleSegmentBuffer>(b2, session);
-            serializer.Serialize(message, ref writer2);
+            
 
-            //      BenchmarkBaseline(message);
-            Benchmark(bytes, serializer, session, message);
+            BenchmarkBaseline(message);
+            BenchmarkFlex(message);
+            BenchmarkApex(message);
         }
 
-        private static void Benchmark(byte[] bytes, Serializer s, SerializerSession session, TypicalMessage message)
+        private static void BenchmarkApex(TypicalMessage message)
         {
-            Console.WriteLine("Benchmarking Flex");
+            var s = new MemoryStream();
+            var settings = new Settings
+            {
+                AllowFunctionSerialization = false,
+                SerializationMode = Mode.Tree,
+                SupportSerializationHooks = false,
+            };
+            settings.MarkSerializable(typeof(TypicalMessage));
+            
+            var binary = Binary.Create(settings);
+           
+            binary.Write(message,s);
+            Console.WriteLine("Benchmarking Apex " + s.Length);
+            var sw = Stopwatch.StartNew();
+            for (var i = 0; i < 10_000_000; i++)
+            {
+                s.Position = 0;
+                binary.Write(message,s);
+            }
+            Console.WriteLine(sw.Elapsed.TotalMilliseconds);
+        }
+
+        private static void BenchmarkFlex(TypicalMessage message)
+        {
+            var serializer = new Serializer(new SerializerOptions(false, new[] {typeof(TypicalMessage)}));
+
+            var session = serializer.CreateSession();
+            var bytes = new byte[100];
+            var b2 = new SingleSegmentBuffer(bytes);
+            var writer2 = new Writer<SingleSegmentBuffer>(b2, session);
+            var d = TypedSerializers<SingleSegmentBuffer, Tree, TypicalMessage>.SerializeWithManifest;
+            d(message, ref writer2);
+            var size = writer2.BufferPos;
+            
+            Console.WriteLine("Benchmarking Flex " + size);
             var sw = Stopwatch.StartNew();
             //    var ss = TypedSerializers<SingleSegmentBuffer, Tree, TypicalMessage>.SerializeWithManifest;
             for (var i = 0; i < 10_000_000; i++)
             {
                 var b = new SingleSegmentBuffer(bytes);
                 var writer = new Writer<SingleSegmentBuffer>(b, session);
-                s.Serialize(message, ref writer);
+                serializer.Serialize(message, ref writer);
                 // ss(message, ref writer);
                 // writer.Commit();
             }

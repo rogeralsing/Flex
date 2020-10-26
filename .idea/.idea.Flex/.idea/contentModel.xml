@@ -29,7 +29,7 @@
           <e p="Stuff.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="net5.0" t="Include">
               <e p="Flex.AssemblyInfo.cs" t="Include" />
             </e>

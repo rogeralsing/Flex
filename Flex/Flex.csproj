@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Apex.Serialization" Version="2.0.1" />
       <PackageReference Include="FastExpressionCompiler" Version="3.0.0-preview-02" />
       <PackageReference Include="FastExpressionCompiler.LightExpression" Version="3.0.0-preview-02" />
       <PackageReference Include="JetBrains.Annotations" Version="2020.2.0-eap" />
