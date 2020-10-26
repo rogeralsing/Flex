@@ -49,7 +49,7 @@ namespace Flex
 
         private static void BenchmarkMessagePack(TypicalMessage message)
         {
-            var bytes = new byte[100];
+            var bytes = new byte[1000];
             Console.WriteLine("Benchmarking MessagePack " );
             var sw = Stopwatch.StartNew();
             for (var i = 0; i < 10_000_000; i++)
