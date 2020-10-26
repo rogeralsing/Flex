@@ -18,33 +18,48 @@ namespace Flex.Buffers
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Writer<TBufferWriter> Create<TBufferWriter>(TBufferWriter destination, SerializerSession session)
-            where TBufferWriter : IBufferWriter<byte> => new Writer<TBufferWriter>(destination, session);
+            where TBufferWriter : IBufferWriter<byte>
+        {
+            return new Writer<TBufferWriter>(destination, session);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<MemoryStreamBufferWriter> Create(MemoryStream destination, SerializerSession session) =>
-            new Writer<MemoryStreamBufferWriter>(new MemoryStreamBufferWriter(destination), session);
+        public static Writer<MemoryStreamBufferWriter> Create(MemoryStream destination, SerializerSession session)
+        {
+            return new Writer<MemoryStreamBufferWriter>(new MemoryStreamBufferWriter(destination), session);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Writer<PoolingStreamBufferWriter> CreatePooled(Stream destination, SerializerSession session,
-            int sizeHint = 0) =>
-            new Writer<PoolingStreamBufferWriter>(new PoolingStreamBufferWriter(destination, sizeHint), session);
+            int sizeHint = 0)
+        {
+            return new Writer<PoolingStreamBufferWriter>(new PoolingStreamBufferWriter(destination, sizeHint), session);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Writer<ArrayStreamBufferWriter> Create(Stream destination, SerializerSession session,
-            int sizeHint = 0) =>
-            new Writer<ArrayStreamBufferWriter>(new ArrayStreamBufferWriter(destination, sizeHint), session);
+            int sizeHint = 0)
+        {
+            return new Writer<ArrayStreamBufferWriter>(new ArrayStreamBufferWriter(destination, sizeHint), session);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<SpanBufferWriter> Create(byte[] output, SerializerSession session) =>
-            Create(output.AsSpan(), session);
+        public static Writer<SpanBufferWriter> Create(byte[] output, SerializerSession session)
+        {
+            return Create(output.AsSpan(), session);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<MemoryBufferWriter> Create(Memory<byte> output, SerializerSession session) =>
-            new Writer<MemoryBufferWriter>(new MemoryBufferWriter(output), session);
+        public static Writer<MemoryBufferWriter> Create(Memory<byte> output, SerializerSession session)
+        {
+            return new Writer<MemoryBufferWriter>(new MemoryBufferWriter(output), session);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Writer<SpanBufferWriter> Create(Span<byte> output, SerializerSession session) =>
-            new Writer<SpanBufferWriter>(new SpanBufferWriter(output), output, session);
+        public static Writer<SpanBufferWriter> Create(Span<byte> output, SerializerSession session)
+        {
+            return new Writer<SpanBufferWriter>(new SpanBufferWriter(output), output, session);
+        }
     }
 
     [PublicAPI]
@@ -61,17 +76,13 @@ namespace Flex.Buffers
         public Writer(TBufferWriter output, SerializerSession session)
         {
             if (typeof(TBufferWriter) == typeof(SpanBufferWriter))
-            {
                 throw new NotSupportedException($"Type {typeof(TBufferWriter)} is not supported by this constructor");
-            }
-            else
-            {
-                _output = output;
-                Session = session;
-                _currentSpan = output.GetSpan();
-                _bufferPos = default;
-                _previousBuffersSize = default;
-            }
+
+            _output = output;
+            Session = session;
+            _currentSpan = output.GetSpan();
+            _bufferPos = default;
+            _previousBuffersSize = default;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -104,13 +115,16 @@ namespace Flex.Buffers
         }
 
         /// <summary>
-        /// Advance the write position in the current span.
+        ///     Advance the write position in the current span.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AdvanceSpan(int length) => _bufferPos += length;
+        public void AdvanceSpan(int length)
+        {
+            _bufferPos += length;
+        }
 
         /// <summary>
-        /// Commit the currently written buffers.
+        ///     Commit the currently written buffers.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Commit()
@@ -125,22 +139,18 @@ namespace Flex.Buffers
         public void EnsureContiguous(int length)
         {
             // The current buffer is adequate.
-            if (_bufferPos + length < _currentSpan.Length)
-            {
-                return;
-            }
+            if (_bufferPos + length < _currentSpan.Length) return;
 
             // The current buffer is inadequate, allocate another.
             Allocate(length);
 #if DEBUG
             // Throw if the allocation does not satisfy the request.
-            if (_currentSpan.Length < length)
-            {
-                ThrowTooLarge(length);
-            }
+            if (_currentSpan.Length < length) ThrowTooLarge(length);
 
-            static void ThrowTooLarge(int l) =>
+            static void ThrowTooLarge(int l)
+            {
                 throw new InvalidOperationException($"Requested buffer length {l} cannot be satisfied by the writer.");
+            }
 #endif
         }
 
@@ -186,10 +196,7 @@ namespace Flex.Buffers
 
                 input = input.Slice(writeSize);
 
-                if (input.Length == 0)
-                {
-                    return;
-                }
+                if (input.Length == 0) return;
 
                 // The current segment is full but there is more to write.
                 Allocate(input.Length);
@@ -281,7 +288,7 @@ namespace Flex.Buffers
 
             Unsafe.WriteUnaligned(ref Unsafe.Add(ref MemoryMarshal.GetReference(_currentSpan), pos), lower);
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Write(Guid value)
         {
@@ -289,7 +296,7 @@ namespace Flex.Buffers
             value.TryWriteBytes(WritableSpan);
             AdvanceSpan(16);
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Write(DateTime value)
         {
@@ -306,7 +313,7 @@ namespace Flex.Buffers
             //first write string bytes, 4 bytes into the span
             var actualLength = Encoding.UTF8.GetBytes(value, span[2..]);
             //then write the actual length at 0 bytes into the span
-            BitConverter.TryWriteBytes(span, (ushort)actualLength);
+            BitConverter.TryWriteBytes(span, (ushort) actualLength);
             AdvanceSpan(actualLength + 2);
         }
 
@@ -314,13 +321,9 @@ namespace Flex.Buffers
         public void WriteManifest(Type type, byte[] manifest)
         {
             if (Session.ShouldWriteManifestIndex(type, out var knownTypeIndex))
-            {
                 Write(knownTypeIndex);
-            }
             else
-            {
                 Write(manifest);
-            }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -333,7 +336,7 @@ namespace Flex.Buffers
             var neededBytes = BitOperations.Log2(value) / 7;
             _bufferPos += neededBytes + 1;
 
-            ulong lower = value;
+            var lower = value;
             lower <<= 1;
             lower |= 0x01;
             lower <<= neededBytes;
@@ -342,7 +345,7 @@ namespace Flex.Buffers
             Unsafe.WriteUnaligned(ref writeHead, lower);
 
             // Write the 2 byte overflow unconditionally
-            ushort upper = (ushort) (value >> (63 - neededBytes));
+            var upper = (ushort) (value >> (63 - neededBytes));
             writeHead = ref Unsafe.Add(ref writeHead, sizeof(ulong));
             Unsafe.WriteUnaligned(ref writeHead, upper);
         }

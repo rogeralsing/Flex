@@ -6,7 +6,8 @@ using System.Runtime.CompilerServices;
 namespace Flex.Buffers.Adaptors
 {
     /// <summary>
-    /// An implementation of <see cref="IBufferWriter{T}"/> which writes to a <see cref="Stream"/>, using an array as an intermediate buffer.
+    ///     An implementation of <see cref="IBufferWriter{T}" /> which writes to a <see cref="Stream" />, using an array as an
+    ///     intermediate buffer.
     /// </summary>
     public struct ArrayStreamBufferWriter : IBufferWriter<byte>
     {
@@ -17,10 +18,7 @@ namespace Flex.Buffers.Adaptors
 
         public ArrayStreamBufferWriter(Stream stream, int sizeHint = 0)
         {
-            if (sizeHint == 0)
-            {
-                sizeHint = DefaultInitialBufferSize;
-            }
+            if (sizeHint == 0) sizeHint = DefaultInitialBufferSize;
 
             _stream = stream;
             _buffer = new byte[sizeHint];
@@ -69,33 +67,36 @@ namespace Flex.Buffers.Adaptors
                 return;
             }
 
-            if (sizeHint == 0)
-            {
-                sizeHint = 1;
-            }
+            if (sizeHint == 0) sizeHint = 1;
 
             if (sizeHint > _buffer.Length - _index)
             {
-                int growBy = Math.Max(sizeHint, _buffer.Length);
+                var growBy = Math.Max(sizeHint, _buffer.Length);
 
-                if (_buffer.Length == 0)
-                {
-                    growBy = Math.Max(growBy, DefaultInitialBufferSize);
-                }
+                if (_buffer.Length == 0) growBy = Math.Max(growBy, DefaultInitialBufferSize);
 
-                int newSize = checked(_buffer.Length + growBy);
+                var newSize = checked(_buffer.Length + growBy);
 
                 Array.Resize(ref _buffer, newSize);
             }
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private static void ThrowNegativeSizeHint() => throw new ArgumentException("Negative values are not supported", "sizeHint");
+        private static void ThrowNegativeSizeHint()
+        {
+            throw new ArgumentException("Negative values are not supported", "sizeHint");
+        }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private static void ThrowNegativeAdvanceCount() => throw new ArgumentException("Negative values are not supported", "count");
+        private static void ThrowNegativeAdvanceCount()
+        {
+            throw new ArgumentException("Negative values are not supported", "count");
+        }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private static void ThrowAdvancePastCapacity() => throw new InvalidOperationException("Cannod advance past the end of the current capacity");
+        private static void ThrowAdvancePastCapacity()
+        {
+            throw new InvalidOperationException("Cannod advance past the end of the current capacity");
+        }
     }
 }

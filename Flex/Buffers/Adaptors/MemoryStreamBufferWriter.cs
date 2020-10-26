@@ -5,7 +5,7 @@ using System.IO;
 namespace Flex.Buffers.Adaptors
 {
     /// <summary>
-    /// An implementation of <see cref="IBufferWriter{T}"/> which writes to a <see cref="MemoryStream"/>.
+    ///     An implementation of <see cref="IBufferWriter{T}" /> which writes to a <see cref="MemoryStream" />.
     /// </summary>
     public readonly struct MemoryStreamBufferWriter : IBufferWriter<byte>
     {
@@ -23,7 +23,7 @@ namespace Flex.Buffers.Adaptors
             if (_stream.Position + count > _stream.Length)
             {
                 //_stream.SetLength(_stream.Position + count);
-            }    
+            }
 
             _stream.Position += count;
         }
@@ -31,10 +31,7 @@ namespace Flex.Buffers.Adaptors
         /// <inheritdoc />
         public Memory<byte> GetMemory(int sizeHint = 0)
         {
-            if (sizeHint < MinRequestSize)
-            {
-                sizeHint = MinRequestSize;
-            }
+            if (sizeHint < MinRequestSize) sizeHint = MinRequestSize;
 
             if (_stream.Capacity - _stream.Position < sizeHint)
             {
@@ -42,16 +39,13 @@ namespace Flex.Buffers.Adaptors
                 _stream.SetLength(_stream.Capacity);
             }
 
-            return _stream.GetBuffer().AsMemory((int)_stream.Position);
+            return _stream.GetBuffer().AsMemory((int) _stream.Position);
         }
 
         /// <inheritdoc />
         public Span<byte> GetSpan(int sizeHint = 0)
         {
-            if (sizeHint < MinRequestSize)
-            {
-                sizeHint = MinRequestSize;
-            }
+            if (sizeHint < MinRequestSize) sizeHint = MinRequestSize;
 
             if (_stream.Capacity - _stream.Position < sizeHint)
             {
@@ -59,7 +53,7 @@ namespace Flex.Buffers.Adaptors
                 _stream.SetLength(_stream.Capacity);
             }
 
-            return _stream.GetBuffer().AsSpan((int)_stream.Position);
+            return _stream.GetBuffer().AsSpan((int) _stream.Position);
         }
     }
 }

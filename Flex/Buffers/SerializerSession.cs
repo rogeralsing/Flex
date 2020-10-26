@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Flex.Buffers
 {
@@ -8,23 +7,17 @@ namespace Flex.Buffers
     {
         private readonly ushort _nextTypeId;
         private readonly Dictionary<object, int> _objects = null!;
+        private readonly List<Type> _trackedTypes = new List<Type>(100);
         private readonly Serializer Serializer;
 
         private int _nextObjectId;
-        private List<Type> _trackedTypes = new List<Type>(100);
 
         public SerializerSession(Serializer serializer)
         {
             Serializer = serializer;
-            if (serializer.Options.PreserveObjectReferences)
-            {
-                _objects = new Dictionary<object, int>();
-            }
+            if (serializer.Options.PreserveObjectReferences) _objects = new Dictionary<object, int>();
 
-            foreach (var type in serializer.Options.KnownTypes)
-            {
-                TrackSerializedType(type);
-            }
+            foreach (var type in serializer.Options.KnownTypes) TrackSerializedType(type);
         }
 
         public void TrackSerializedObject(object obj)
@@ -45,13 +38,12 @@ namespace Flex.Buffers
         }
 
 
-
         public bool ShouldWriteManifestIndex(Type key, out uint value)
         {
             for (var i = 0; i < _trackedTypes.Count; i++)
             {
                 if (key != _trackedTypes[i]) continue;
-                value = ((uint)i << 8) | 254;
+                value = ((uint) i << 8) | 254;
                 return true;
             }
 
@@ -59,11 +51,13 @@ namespace Flex.Buffers
             return false;
         }
 
-        public void TrackSerializedType(Type type) => _trackedTypes.Add(type);
+        public void TrackSerializedType(Type type)
+        {
+            _trackedTypes.Add(type);
+        }
 
         public void Dispose()
         {
-
         }
     }
 }

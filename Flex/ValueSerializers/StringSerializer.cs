@@ -12,7 +12,7 @@ namespace Flex.ValueSerializers
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteManifestStatic(ref Writer<TBuffer> writer)
         {
-            writer.Write((byte)5);
+            writer.Write((byte) 5);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -30,12 +30,12 @@ namespace Flex.ValueSerializers
         {
             WriteStatic(value, ref writer);
         }
-        
-        
+
+
         public override Expression EmitExpression(Expression value, Expression typedWriter)
         {
             var method = typeof(Writer<TBuffer>).GetMethod("Write", new[] {typeof(string)});
-            var call = Expression.Call(typedWriter,method, value);
+            var call = Expression.Call(typedWriter, method, value);
             return call;
         }
     }

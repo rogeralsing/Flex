@@ -1,8 +1,6 @@
 using System;
 using System.Buffers;
 using System.Collections.Concurrent;
-using System.Linq;
-using System.Text;
 using Flex.Compilation;
 using Flex.ValueSerializers;
 using JetBrains.Annotations;
@@ -39,11 +37,12 @@ namespace Flex.Generics
 
     public static class TypedSerializers<TBuffer, TStyle, TValue> where TBuffer : IBufferWriter<byte>
     {
-        public static readonly ObjectSerializerDelegate<TBuffer,TStyle, TValue> SerializeWithManifest =
+        public static readonly ObjectSerializerDelegate<TBuffer, TStyle, TValue> SerializeWithManifest =
             Compiler<TBuffer, TStyle>.CompileSerializer<TValue>(typeof(TValue), true);
-        
-        public static readonly ObjectSerializerDelegate<TBuffer,TStyle, TValue> SerializeNoManifest =
+
+        public static readonly ObjectSerializerDelegate<TBuffer, TStyle, TValue> SerializeNoManifest =
             Compiler<TBuffer, TStyle>.CompileSerializer<TValue>(typeof(TValue), false);
+
         //
         // public static readonly ObjectSerializer<TValue, TStyle, TBuffer> Serializer =
         //     new ObjectSerializer<TValue, TStyle, TBuffer>(SerializerDelegate);

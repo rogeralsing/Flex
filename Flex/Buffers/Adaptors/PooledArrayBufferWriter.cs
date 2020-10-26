@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace Flex.Buffers.Adaptors
 {
     /// <summary>
-    /// A <see cref="IBufferWriter{T}"/> implementation implemented using pooled arrays.
+    ///     A <see cref="IBufferWriter{T}" /> implementation implemented using pooled arrays.
     /// </summary>
     public struct PooledArrayBufferWriter : IBufferWriter<byte>, IDisposable
     {
@@ -28,18 +28,19 @@ namespace Flex.Buffers.Adaptors
             if (_bytesWritten > _buffer.Length)
             {
                 ThrowInvalidCount();
+
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                static void ThrowInvalidCount() => throw new InvalidOperationException("Cannot advance past the end of the buffer");
+                static void ThrowInvalidCount()
+                {
+                    throw new InvalidOperationException("Cannot advance past the end of the buffer");
+                }
             }
         }
 
         /// <inheritdoc />
         public Memory<byte> GetMemory(int sizeHint = 0)
         {
-            if (_bytesWritten + sizeHint > _buffer.Length)
-            {
-                Resize(sizeHint);
-            }
+            if (_bytesWritten + sizeHint > _buffer.Length) Resize(sizeHint);
 
             return _buffer.AsMemory(_bytesWritten);
         }
@@ -47,10 +48,7 @@ namespace Flex.Buffers.Adaptors
         /// <inheritdoc />
         public Span<byte> GetSpan(int sizeHint = 0)
         {
-            if (_bytesWritten + sizeHint > _buffer.Length)
-            {
-                Resize(sizeHint);
-            }
+            if (_bytesWritten + sizeHint > _buffer.Length) Resize(sizeHint);
 
             return _buffer.AsSpan(_bytesWritten);
         }
@@ -58,18 +56,12 @@ namespace Flex.Buffers.Adaptors
         /// <inheritdoc />
         public void Dispose()
         {
-            if (_buffer is object)
-            {
-                ArrayPool<byte>.Shared.Return(_buffer);
-            }
+            if (_buffer is object) ArrayPool<byte>.Shared.Return(_buffer);
         }
 
         private void Resize(int sizeHint)
         {
-            if (sizeHint < MinRequestSize)
-            {
-                sizeHint = MinRequestSize;
-            }
+            if (sizeHint < MinRequestSize) sizeHint = MinRequestSize;
 
             var newBuffer = ArrayPool<byte>.Shared.Rent(_bytesWritten + sizeHint);
             _buffer.CopyTo(newBuffer, 0);

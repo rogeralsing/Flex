@@ -8,46 +8,47 @@ namespace Flex
 {
     public class Serializer
     {
-        public Serializer(SerializerOptions options )
+        private readonly bool _preserveObjectReferences;
+
+        public Serializer(SerializerOptions options)
         {
             Options = options;
+            _preserveObjectReferences = options.PreserveObjectReferences;
         }
 
-        public SerializerSession CreateSession() => new SerializerSession(this);
-
         public SerializerOptions Options { get; }
+
+        public SerializerSession CreateSession()
+        {
+            return new SerializerSession(this);
+        }
 
         public void Serialize<T>(T value, MemoryStream stream)
         {
             var writer = Writer.Create(stream, new SerializerSession(this));
-            Serialize(value, writer,Options.PreserveObjectReferences);
+            Serialize(value, writer, _preserveObjectReferences);
         }
-        
+
         public void Serialize<T>(T value, Stream stream)
         {
             var writer = Writer.Create(stream, new SerializerSession(this));
-            Serialize(value, writer,Options.PreserveObjectReferences);
+            Serialize(value, writer, _preserveObjectReferences);
         }
-        
-        public void Serialize<T,TBuffer>(T value, ref Writer<TBuffer> writer)where TBuffer:IBufferWriter<byte>
+
+        public void Serialize<T, TBuffer>(T value, ref Writer<TBuffer> writer) where TBuffer : IBufferWriter<byte>
         {
-            Serialize(value, writer,Options.PreserveObjectReferences);
-        }
-        
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static void Serialize<T,TBuffer>(T value, Writer<TBuffer> writer, bool preserveReferences) where TBuffer:IBufferWriter<byte>
-        {
-            if (preserveReferences)
-                Serialize<T, TBuffer, Graph>(value, ref writer);
-            else
-                Serialize<T, TBuffer, Tree>(value, ref writer);
+            Serialize(value, writer, _preserveObjectReferences);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static void Serialize<TValue,TBuffer,TStyle>(TValue value, ref Writer<TBuffer> writer) where TBuffer:IBufferWriter<byte>
+        private static void Serialize<T, TBuffer>(T value, Writer<TBuffer> writer, bool preserveReferences)
+            where TBuffer : IBufferWriter<byte>
         {
-            var s = TypedSerializers<TBuffer, TStyle,TValue>.SerializeWithManifest;
-            s(value, ref writer);
+            if (preserveReferences)
+                TypedSerializers<TBuffer, Graph, T>.SerializeWithManifest(value, ref writer);
+            else
+                TypedSerializers<TBuffer, Tree, T>.SerializeWithManifest(value, ref writer);
+
             writer.Commit();
         }
     }

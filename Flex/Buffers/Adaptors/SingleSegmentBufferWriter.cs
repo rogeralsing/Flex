@@ -8,32 +8,51 @@ namespace Flex.Buffers.Adaptors
     public struct SingleSegmentBuffer : IBufferWriter<byte>
     {
         private readonly byte[] _buffer;
-        private int _written;
 
         public SingleSegmentBuffer(byte[] buffer)
         {
             _buffer = buffer;
-            _written = 0;
+            Length = 0;
         }
 
-        public void Advance(int bytes) => _written += bytes;
+        public void Advance(int bytes)
+        {
+            Length += bytes;
+        }
 
         [Pure]
-        public Memory<byte> GetMemory(int sizeHint = 0) => _buffer.AsMemory(_written);
+        public Memory<byte> GetMemory(int sizeHint = 0)
+        {
+            return _buffer.AsMemory(Length);
+        }
 
         [Pure]
-        public Span<byte> GetSpan(int sizeHint) => _buffer.AsSpan(_written);
+        public Span<byte> GetSpan(int sizeHint)
+        {
+            return _buffer.AsSpan(Length);
+        }
 
-        public byte[] ToArray() => _buffer.AsSpan(0, _written).ToArray();
+        public byte[] ToArray()
+        {
+            return _buffer.AsSpan(0, Length).ToArray();
+        }
 
-        public void Reset() => _written = 0;
+        public void Reset()
+        {
+            Length = 0;
+        }
+
+        [Pure] public int Length { get; private set; }
 
         [Pure]
-        public int Length => _written;
+        public ReadOnlySequence<byte> GetReadOnlySequence()
+        {
+            return new ReadOnlySequence<byte>(_buffer, 0, Length);
+        }
 
-        [Pure]
-        public ReadOnlySequence<byte> GetReadOnlySequence() => new ReadOnlySequence<byte>(_buffer, 0, _written);
-
-        public override string ToString() => Encoding.UTF8.GetString(_buffer.AsSpan(0, _written).ToArray());
+        public override string ToString()
+        {
+            return Encoding.UTF8.GetString(_buffer.AsSpan(0, Length).ToArray());
+        }
     }
 }

@@ -6,7 +6,8 @@ using System.Runtime.CompilerServices;
 namespace Flex.Buffers.Adaptors
 {
     /// <summary>
-    /// An implementation of <see cref="IBufferWriter{T}"/> for writing to a <see cref="Stream"/>, using pooled arrays as an intermediate buffer.
+    ///     An implementation of <see cref="IBufferWriter{T}" /> for writing to a <see cref="Stream" />, using pooled arrays as
+    ///     an intermediate buffer.
     /// </summary>
     public struct PoolingStreamBufferWriter : IBufferWriter<byte>, IDisposable
     {
@@ -30,58 +31,43 @@ namespace Flex.Buffers.Adaptors
             if (_bytesWritten > _buffer.Length)
             {
                 ThrowInvalidCount();
+
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                static void ThrowInvalidCount() => throw new InvalidOperationException("Cannot advance past the end of the buffer");
+                static void ThrowInvalidCount()
+                {
+                    throw new InvalidOperationException("Cannot advance past the end of the buffer");
+                }
             }
         }
 
         /// <inheritdoc />
         public Memory<byte> GetMemory(int sizeHint = 0)
         {
-            if (sizeHint < MinRequestSize)
-            {
-                sizeHint = MinRequestSize;
-            }
+            if (sizeHint < MinRequestSize) sizeHint = MinRequestSize;
 
-            if (sizeHint <= _buffer.Length - _bytesWritten)
-            {
-                return _buffer.AsMemory(_bytesWritten);
-            }
-            else
-            {
-                _bytesWritten = 0;
-                Resize(sizeHint);
-                return _buffer;
-            }
+            if (sizeHint <= _buffer.Length - _bytesWritten) return _buffer.AsMemory(_bytesWritten);
+
+            _bytesWritten = 0;
+            Resize(sizeHint);
+            return _buffer;
         }
 
         /// <inheritdoc />
         public Span<byte> GetSpan(int sizeHint = 0)
         {
-            if (sizeHint < MinRequestSize)
-            {
-                sizeHint = MinRequestSize;
-            }
+            if (sizeHint < MinRequestSize) sizeHint = MinRequestSize;
 
-            if (sizeHint <= _buffer.Length - _bytesWritten)
-            {
-                return _buffer.AsSpan(_bytesWritten);
-            }
-            else
-            {
-                _bytesWritten = 0;
-                Resize(sizeHint);
-                return _buffer;
-            }
+            if (sizeHint <= _buffer.Length - _bytesWritten) return _buffer.AsSpan(_bytesWritten);
+
+            _bytesWritten = 0;
+            Resize(sizeHint);
+            return _buffer;
         }
 
         private void Resize(int sizeHint)
         {
-            if (sizeHint < 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(sizeHint));
-            }
-            
+            if (sizeHint < 1) throw new ArgumentOutOfRangeException(nameof(sizeHint));
+
             var newBuffer = ArrayPool<byte>.Shared.Rent(_buffer.Length + sizeHint);
 
             _buffer.CopyTo(newBuffer, 0);
@@ -92,10 +78,7 @@ namespace Flex.Buffers.Adaptors
         /// <inheritdoc />
         public void Dispose()
         {
-            if (_buffer is object)
-            {
-                ArrayPool<byte>.Shared.Return(_buffer);
-            }
+            if (_buffer is object) ArrayPool<byte>.Shared.Return(_buffer);
         }
     }
 }
