@@ -33,8 +33,9 @@ namespace Flex
             
 
         //    BenchmarkBaseline(message);
-      //      BenchmarkFlex(message);
-            BenchmarkFlexUntyped(message);
+        BenchmarkFlexUntyped(message);
+            BenchmarkFlex(message);
+           
         //    BenchmarkApex(message);
         }
 
@@ -69,22 +70,20 @@ namespace Flex
 
             var session = serializer.CreateSession();
             var bytes = new byte[100];
-            var b2 = new SingleSegmentBuffer(bytes);
-            var writer2 = new Writer<SingleSegmentBuffer>(b2, session);
-            var d = TypedSerializers<SingleSegmentBuffer, Tree, TypicalMessage>.SerializeWithManifest;
-            d(message, ref writer2);
-            var size = writer2.BufferPos;
             
-            Console.WriteLine("Benchmarking Flex " + size);
+            {//warmup
+                var b = new SingleSegmentBuffer(bytes);
+                var writer = new Writer<SingleSegmentBuffer>(b, session);
+                serializer.Serialize(message, ref writer);
+            }
+
+            Console.WriteLine("Benchmarking Flex ");
             var sw = Stopwatch.StartNew();
-            //    var ss = TypedSerializers<SingleSegmentBuffer, Tree, TypicalMessage>.SerializeWithManifest;
             for (var i = 0; i < 10_000_000; i++)
             {
                 var b = new SingleSegmentBuffer(bytes);
                 var writer = new Writer<SingleSegmentBuffer>(b, session);
-                serializer.Serialize((object)message, ref writer);
-                // ss(message, ref writer);
-                // writer.Commit();
+                serializer.Serialize(message, ref writer);
             }
 
             Console.WriteLine(sw.Elapsed.TotalMilliseconds);
@@ -96,10 +95,12 @@ namespace Flex
 
             var session = serializer.CreateSession();
             var bytes = new byte[100];
-            var b2 = new SingleSegmentBuffer(bytes);
-            var writer2 = new Writer<SingleSegmentBuffer>(b2, session);
-            serializer.SerializeUntyped(message, ref writer2);
-            
+     
+            { //warmup
+                var b = new SingleSegmentBuffer(bytes);
+                var writer = new Writer<SingleSegmentBuffer>(b, session);
+                serializer.SerializeUntyped(message, ref writer);
+            }
             
             Console.WriteLine("Benchmarking Flex Untyped");
             var sw = Stopwatch.StartNew();

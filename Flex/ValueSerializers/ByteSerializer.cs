@@ -16,13 +16,9 @@ namespace Flex.ValueSerializers
             writer.Write(value);
         }
 
-        public override void WriteManifest(ref Writer<TBuffer> writer)
+        public override void Write(byte value, ref Writer<TBuffer> writer, bool writeManifest)
         {
-            writer.Write((byte) 1);
-        }
-
-        public override void Write(byte value, ref Writer<TBuffer> writer)
-        {
+            if (writeManifest) writer.Write((byte) 1);
             writer.Write(value);
         }
     }

@@ -1,5 +1,4 @@
 using System.Buffers;
-using System.Runtime.CompilerServices;
 using FastExpressionCompiler.LightExpression;
 using Flex.Buffers;
 using JetBrains.Annotations;
@@ -11,13 +10,9 @@ namespace Flex.ValueSerializers
     {
         private const int Size = sizeof(int);
 
-        public override void WriteManifest(ref Writer<TBuffer> writer)
+        public override void Write(int value, ref Writer<TBuffer> writer,bool writeManifest)
         {
-            writer.Write((byte) 2);
-        }
-
-        public override void Write(int value, ref Writer<TBuffer> writer)
-        {
+            if (writeManifest) writer.Write((byte) 2);
             writer.Write(value);
         }
 

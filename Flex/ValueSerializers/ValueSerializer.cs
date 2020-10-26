@@ -12,19 +12,17 @@ namespace Flex.ValueSerializers
             return Expression.Call(method, value, typedWriter);
         }
 
-        public abstract void WriteManifest(ref Writer<TBuffer> writer);
-
-        public abstract void WriteObject(object value, ref Writer<TBuffer> writer);
+        public abstract void WriteObject(object value, ref Writer<TBuffer> writer, bool writeManifest);
     }
 
     public abstract class ValueSerializer<TValue, TBuffer> : ValueSerializer<TBuffer>
         where TBuffer : IBufferWriter<byte>
     {
-        public override void WriteObject(object value, ref Writer<TBuffer> writer)
+        public override void WriteObject(object value, ref Writer<TBuffer> writer, bool writeManifest)
         {
-            Write((TValue) value, ref writer);
+            Write((TValue) value, ref writer, writeManifest);
         }
 
-        public abstract void Write(TValue value, ref Writer<TBuffer> writer);
+        public abstract void Write(TValue value, ref Writer<TBuffer> writer, bool writeManifest);
     }
 }

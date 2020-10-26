@@ -17,29 +17,13 @@ namespace Flex.ValueSerializers
         public const byte ManifestFull = 255;
         public const byte ManifestIndex = 254;
         private readonly ObjectSerializerDelegate<TBuffer, TStyle, TValue> _serializer;
-        private readonly byte[] _manifest = GetManifest();
-        private readonly Type _type = typeof(TValue);
-
+        
         public ObjectSerializer(ObjectSerializerDelegate<TBuffer, TStyle, TValue> serializer)
         {
             _serializer = serializer;
         }
 
-        private static byte[] GetManifest()
-        {
-            return Encoding
-                .UTF8
-                .GetBytes(typeof(TValue)!.FullName!)
-                .Prepend(ManifestFull)
-                .ToArray();
-        }
-
-        public override void WriteManifest(ref Writer<TBuffer> writer)
-        {
-            writer.WriteManifest(_type, _manifest);
-        }
-
-        public override void Write(TValue value, ref Writer<TBuffer> writer)
+        public override void Write(TValue value, ref Writer<TBuffer> writer, bool writeManifest)
         {
             _serializer(value, ref writer);
         }

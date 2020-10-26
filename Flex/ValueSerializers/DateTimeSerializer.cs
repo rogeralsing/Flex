@@ -12,13 +12,9 @@ namespace Flex.ValueSerializers
     {
         private const int Size = 9;
 
-        public override void WriteManifest(ref Writer<TBuffer> writer)
+        public override void Write(DateTime value, ref Writer<TBuffer> writer, bool writeManifest)
         {
-            writer.Write((byte) 4);
-        }
-
-        public override void Write(DateTime value, ref Writer<TBuffer> writer)
-        {
+            if (writeManifest) writer.Write((byte) 4);
             writer.Write(value);
         }
 
