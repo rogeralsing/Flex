@@ -6,7 +6,7 @@ namespace Flex.ValueSerializers
 {
     public abstract class ValueSerializer<TBuffer> where TBuffer : IBufferWriter<byte>
     {
-        public virtual Expression EmitExpression(Expression value, Expression typedWriter)
+        public virtual Expression EmitExpression(Expression value, Expression typedWriter, bool includeManifest)
         {
             var method = GetType().GetMethod("WriteStatic");
             return Expression.Call(method, value, typedWriter);

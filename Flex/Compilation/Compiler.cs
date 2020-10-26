@@ -45,22 +45,20 @@ namespace Flex.Compilation
             var typedTarget = Expression.Parameter(type, "target");
             var typedWriter = Expression.Parameter(writerType, "writer");
             var writeManifest = Expression.Parameter(typeof(bool), "writeManifest");
-
-
             var expressions = new List<Expression>();
-            
-                var manifest = Encoding
-                    .UTF8
-                    .GetBytes(type.FullName!)
-                    .Prepend((byte) 255)
-                    .ToArray();
-                var typeExpression = Expression.Constant(type);
-                var manifestExpression = Expression.Constant(manifest);
 
-                var method = typeof(Writer<TBuffer>).GetMethod(nameof(Writer<TBuffer>.WriteManifest));
-                var writeManifestCall = Expression.Call(typedWriter, method, typeExpression, manifestExpression);
+            var manifest = Encoding
+                .UTF8
+                .GetBytes(type.FullName!)
+                .Prepend((byte) 255)
+                .ToArray();
+            var typeExpression = Expression.Constant(type);
+            var manifestExpression = Expression.Constant(manifest);
 
-                expressions.Add(Expression.IfThen(writeManifest, writeManifestCall));
+            var method = typeof(Writer<TBuffer>).GetMethod(nameof(Writer<TBuffer>.WriteManifest));
+            var writeManifestCall = Expression.Call(typedWriter, method, typeExpression, manifestExpression);
+
+            expressions.Add(Expression.IfThen(writeManifest, writeManifestCall));
 
 
             for (var index = 0; index < fields.Length; index++)
@@ -71,14 +69,20 @@ namespace Flex.Compilation
                 var memberAccess = Expression.MakeMemberAccess(typedTarget, field);
                 if (field.FieldType.IsSealed)
                 {
-                    var writeField = serializer.EmitExpression(memberAccess, typedWriter);
+                    var writeField = serializer.EmitExpression(memberAccess, typedWriter, false);
+                    expressions.Add(writeField);
+                }
+                else
+                {
+                    var writeField = serializer.EmitExpression(memberAccess, typedWriter, true);
                     expressions.Add(writeField);
                 }
             }
 
             Expression body = expressions.Any() ? Expression.Block(expressions) : Expression.Empty();
             var lambda =
-                Expression.Lambda<ObjectSerializerDelegate<TBuffer, TStyle, TValue>>(body, typedTarget, typedWriter, writeManifest);
+                Expression.Lambda<ObjectSerializerDelegate<TBuffer, TStyle, TValue>>(body, typedTarget, typedWriter,
+                    writeManifest);
 
             var del = lambda.CompileFast();
             var cs = lambda.ToCSharpString();

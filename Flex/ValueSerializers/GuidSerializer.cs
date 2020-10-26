@@ -18,7 +18,7 @@ namespace Flex.ValueSerializers
             writer.Write(value);
         }
 
-        public override Expression EmitExpression(Expression value, Expression typedWriter)
+        public override Expression EmitExpression(Expression value, Expression typedWriter, bool includeManifest)
         {
             var method = typeof(Writer<TBuffer>).GetMethod("Write", new[] {typeof(Guid)});
             var call = Expression.Call(typedWriter, method, value);
