@@ -7,13 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Flex/Buffers/DeserializerSession.cs" afterDir="false" />
+    <list default="true" id="83351d86-0398-4f9f-b6d4-25e5fc0102a3" name="Default Changelist" comment=":-)">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Flex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/Reader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/Reader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flex/ValueSerializers/ValueDeserializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/ValueSerializers/ValueDeserializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flex/Serializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Flex/Serializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,16 +50,13 @@
       <option value="$PROJECT_DIR$/Flex/Generics/SerializerCache.cs" />
       <option value="$PROJECT_DIR$/Flex/SerializerOptions.cs" />
       <option value="$PROJECT_DIR$/Flex/Reflection/ReflectionEx.cs" />
-      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
       <option value="$PROJECT_DIR$/Flex/MessagePackStuff/aaa.cs" />
       <option value="$PROJECT_DIR$/Flex/MessagePackStuff/ThreadsafeTypeKeyHashTable.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ObjectSerializerDelegate.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Stuff.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ValueSerializer.cs" />
-      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/Compilation/Compiler.cs" />
       <option value="$PROJECT_DIR$/Flex/Generics/Serializers.cs" />
-      <option value="$PROJECT_DIR$/Flex/Program.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ValueDeserializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/Int32Serializer.cs" />
       <option value="$PROJECT_DIR$/Flex/ValueSerializers/ByteSerializer.cs" />
@@ -71,6 +68,9 @@
       <option value="$PROJECT_DIR$/Flex/Buffers/SerializerSession.cs" />
       <option value="$PROJECT_DIR$/Flex/Buffers/DeserializerSession.cs" />
       <option value="$PROJECT_DIR$/Flex/Buffers/Reader.cs" />
+      <option value="$PROJECT_DIR$/Flex/Buffers/Writer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Serializer.cs" />
+      <option value="$PROJECT_DIR$/Flex/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jLGY8meG9llKVGduTHNUKi1Q35" />
@@ -124,6 +124,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603576002876</updated>
       <workItem from="1603576013278" duration="6157000" />
+      <workItem from="1603799306578" duration="1363000" />
     </task>
     <task id="LOCAL−00001" summary="First">
       <created>1603576085361</created>
@@ -359,7 +360,13 @@
       <option name="presentableId" value="LOCAL−00039" />
       <updated>1603742243681</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL−00040" summary=":-)">
+      <created>1603745699209</created>
+      <option name="number" value="LOCAL−00040" />
+      <option name="presentableId" value="LOCAL−00040" />
+      <updated>1603745699209</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,6 +382,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -391,7 +399,8 @@
     <MESSAGE value="faster manifest" />
     <MESSAGE value="MessagePack, why so slow?" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value=":-)" />
+    <option name="LAST_COMMIT_MESSAGE" value=":-)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -408,6 +417,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Flex/Buffers/Writer.cs</url>
+          <line>157</line>
+          <properties documentPath="$PROJECT_DIR$/Flex/Buffers/Writer.cs" initialLine="157" containingFunctionPresentation="method 'EnsureContiguous'">
+            <startOffsets>
+              <option value="5646" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5668" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

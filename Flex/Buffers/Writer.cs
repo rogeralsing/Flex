@@ -136,6 +136,13 @@ namespace Flex.Buffers
             _currentSpan = default;
             _bufferPos = default;
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Reset()
+        {
+            _bufferPos = default;
+            _previousBuffersSize = default;
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void EnsureContiguous(int length)
@@ -147,7 +154,8 @@ namespace Flex.Buffers
             Allocate(length);
 #if DEBUG
             // Throw if the allocation does not satisfy the request.
-            if (_currentSpan.Length < length) ThrowTooLarge(length);
+            if (_currentSpan.Length < length) 
+                ThrowTooLarge(length);
 
             static void ThrowTooLarge(int l)
             {

@@ -30,6 +30,13 @@ namespace Flex
             var writer = Writer.Create(stream, new SerializerSession(this));
             Serialize(value, writer, _preserveObjectReferences);
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Serialize<T>(T value, MemoryStream stream, SerializerSession session)
+        {
+            var writer = Writer.Create(stream, session);
+            Serialize(value, writer, _preserveObjectReferences);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Serialize<T>(T value, Stream stream)
@@ -48,9 +55,10 @@ namespace Flex
         public void SerializeUntyped<TBuffer>(object value, ref Writer<TBuffer> writer) where TBuffer : IBufferWriter<byte>
         {
             if (_preserveObjectReferences)
-                Serializers<TBuffer, Graph>.ForType(value.GetType()).WriteObject(value,ref writer,true);
+                Serializers<TBuffer, Graph>.ForType(value.GetType()).WriteObject(value,ref writer,false);
             else 
-                Serializers<TBuffer, Tree>.ForType(value.GetType()).WriteObject(value,ref writer,true);
+                Serializers<TBuffer, Tree>.ForType(value.GetType()).WriteObject(value,ref writer,false);
+            
             writer.Commit();
         }
 
